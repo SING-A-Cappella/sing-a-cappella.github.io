@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Community calendar — SING! Edmonton</title>
+<meta name="description" content="Concerts, workshops, auditions and sing-alongs from SING! Edmonton and Edmonton's choirs and vocal groups.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="pages.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:site_name" content="SING! Edmonton">
+<meta property="og:title" content="Community calendar — SING! Edmonton">
+<meta property="og:description" content="Concerts, workshops, auditions and sing-alongs from Edmonton's vocal groups.">
+<meta property="og:image" content="https://singedmonton.com/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div id="siteHeader"></div>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="preview-note" data-preview-note>Preview: example community events are shown until the calendar is connected</p>
+      <p class="eyebrow" data-edit="calp.eyebrow">What's on in Edmonton</p>
+      <h1 data-edit="calp.title">Community calendar</h1>
+      <p class="lede" data-edit="calp.lede">Concerts, workshops, auditions and sing-alongs from SING! and Edmonton's vocal groups, all in one place.</p>
+      <div class="head-actions">
+        <a class="btn btn-red" href="submit-event.html" data-edit="calp.add">Add your event</a>
+        <a class="btn btn-ghost" href="#subscribe" data-edit="calp.sub">Put it in my calendar</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream">
+    <div class="wrap">
+      <div class="filters">
+        <div class="seg" role="group" aria-label="Show">
+          <button type="button" data-source="all" aria-pressed="true">Everything</button>
+          <button type="button" data-source="sing" aria-pressed="false">SING! events</button>
+          <button type="button" data-source="community" aria-pressed="false">Community</button>
+        </div>
+        <select id="typeFilter" aria-label="Kind of event"></select>
+        <input type="search" id="calSearch" placeholder="Search groups, events, venues" aria-label="Search the calendar">
+      </div>
+      <p class="load-note" id="calNote" hidden>Community events couldn't load just now. Try again in a minute.</p>
+      <ol class="calendar" id="calList"><li class="empty">Loading…</li></ol>
+    </div>
+  </section>
+
+  <section class="section" id="subscribe">
+    <div class="wrap subscribe">
+      <div>
+        <h2 data-edit="calp.subTitle">Never miss a show</h2>
+        <p data-edit="calp.subBody">Subscribe once and every event on this calendar shows up in your own calendar app, and keeps itself up to date.</p>
+      </div>
+      <div class="subscribe-box">
+        <a class="btn btn-red" id="subGoogle" target="_blank" rel="noopener">Google Calendar</a>
+        <a class="btn btn-navy" id="subApple">Apple or Outlook</a>
+        <button class="btn btn-outline" type="button" id="subCopy">Copy the link</button>
+        <p class="help" id="subNote"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="events.js"></script>
+<script src="config.js"></script>
+<script src="common.js"></script>
+<script src="calendar.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perform at SING! — SING! Edmonton</title>
+<meta name="description" content="Apply to perform at SING! Edmonton 2027, March 12–14. Vocal groups and solo vocal artists welcome.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="pages.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:site_name" content="SING! Edmonton">
+<meta property="og:title" content="Perform at SING! Edmonton 2027">
+<meta property="og:description" content="Vocal groups and solo vocal artists: apply for the March 12–14, 2027 festival.">
+<meta property="og:image" content="https://singedmonton.com/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div id="siteHeader"></div>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="preview-note" data-preview-note>Preview: this form isn't connected yet, so nothing will be sent</p>
+      <p class="eyebrow" data-edit="pf.eyebrow">SING! Edmonton 2027 · March 12–14</p>
+      <h1 data-edit="pf.title">Perform at SING!</h1>
+      <p class="lede" data-edit="pf.lede">We're building the 2027 lineup. If you sing in a vocal group, or you're a solo vocal artist, we'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap form-wrap">
+      <p class="form-intro" data-edit="pf.intro">Applications for the 2027 festival are open now. Links to videos or recordings help us most, even rough phone videos from a rehearsal.</p>
+
+      <form class="sing-form" data-kind="application" data-thanks="thanks">
+        <fieldset>
+          <legend data-edit="pf.l1">About you</legend>
+          <div class="field req"><label for="name">Group or artist name</label><input id="name" name="name" required maxlength="120" autocomplete="organization"></div>
+          <div class="row-2">
+            <div class="field req"><label for="hometown">Where you're based</label><input id="hometown" name="hometown" required maxlength="80" placeholder="Edmonton, Red Deer, Calgary…"></div>
+            <div class="field"><label for="size">How many singers?</label><input id="size" name="size" type="number" min="1" max="300"></div>
+          </div>
+          <div class="field req"><span class="label">Style</span>
+            <div class="checks" data-multi="styles" data-need-one="style">
+              <label><input type="checkbox" name="styles" value="Contemporary a cappella"> Contemporary a cappella</label>
+              <label><input type="checkbox" name="styles" value="Barbershop"> Barbershop</label>
+              <label><input type="checkbox" name="styles" value="Jazz"> Jazz</label>
+              <label><input type="checkbox" name="styles" value="Choral"> Choral</label>
+              <label><input type="checkbox" name="styles" value="Gospel"> Gospel</label>
+              <label><input type="checkbox" name="styles" value="Pop or rock"> Pop or rock</label>
+              <label><input type="checkbox" name="styles" value="Beatbox"> Beatbox</label>
+              <label><input type="checkbox" name="styles" value="Comedy"> Comedy</label>
+              <label><input type="checkbox" name="styles" value="Other"> Other</label>
+            </div>
+          </div>
+          <div class="field req"><label for="about">Tell us about yourselves</label><textarea id="about" name="about" required maxlength="1500"></textarea><p class="help">Who you are, what you sing, and where you've performed.</p></div>
+        </fieldset>
+
+        <fieldset>
+          <legend data-edit="pf.l2">Let us hear you</legend>
+          <div class="field"><label for="video">Video links</label><textarea id="video" name="video" maxlength="1500" style="min-height:90px" placeholder="YouTube, Vimeo, Instagram or Google Drive links, one per line"></textarea></div>
+          <div class="field"><label for="audio">Audio links</label><textarea id="audio" name="audio" maxlength="1500" style="min-height:90px" placeholder="Spotify, SoundCloud, Bandcamp… one per line"></textarea></div>
+          <div class="field"><label for="links">Website and social media</label><textarea id="links" name="links" maxlength="800" style="min-height:90px"></textarea></div>
+          <div class="field"><label for="photo">Group photo</label><input id="photo" type="file" accept="image/*"><p class="help">Optional. If you're booked, we may use it to promote the festival.</p></div>
+        </fieldset>
+
+        <fieldset>
+          <legend data-edit="pf.l3">The festival</legend>
+          <div class="field req"><span class="label">What are you interested in?</span>
+            <div class="checks" data-multi="interests" data-need-one="thing you're interested in">
+              <label><input type="checkbox" name="interests" value="Community showcase concert"> Community showcase concert</label>
+              <label><input type="checkbox" name="interests" value="Festival concert"> Festival concert</label>
+              <label><input type="checkbox" name="interests" value="Leading a workshop"> Leading a workshop</label>
+              <label><input type="checkbox" name="interests" value="Education Week clinics"> Education Week clinics</label>
+              <label><input type="checkbox" name="interests" value="Community Week"> Community Week</label>
+            </div>
+          </div>
+          <div class="field req"><label for="available">Are you free March 12–14, 2027?</label>
+            <select id="available" name="available" required>
+              <option value="">Choose one</option>
+              <option>Yes — all weekend</option><option>Some days</option><option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field"><label for="tech">Technical needs</label><textarea id="tech" name="tech" maxlength="800" style="min-height:90px" placeholder="Number of microphones, a keyboard for pitch, anything else"></textarea></div>
+          <div class="field"><label for="notes">Anything else we should know?</label><textarea id="notes" name="notes" maxlength="1200" style="min-height:90px"></textarea></div>
+        </fieldset>
+
+        <fieldset class="private">
+          <legend data-edit="pf.l4">Contact</legend>
+          <p class="help">Only the SING! team sees this.</p>
+          <div class="row-2">
+            <div class="field req"><label for="contactName">Your name</label><input id="contactName" name="contactName" required maxlength="100" autocomplete="name"></div>
+            <div class="field req"><label for="contactEmail">Your email</label><input id="contactEmail" name="contactEmail" type="email" required maxlength="160" autocomplete="email"></div>
+          </div>
+          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" maxlength="40" autocomplete="tel"></div>
+        </fieldset>
+
+        <label class="consent"><input type="checkbox" name="mediaPermission" value="yes" required> <span data-edit="pf.consent">We have permission to share the photos, videos and recordings in this application.</span></label>
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website_hp" tabindex="-1" autocomplete="off"></label></div>
+        <button class="btn btn-red" type="submit">Send my application</button>
+        <p class="form-status" role="alert"></p>
+        <p class="help">See our <a href="privacy.html">privacy note</a>.</p>
+      </form>
+
+      <div class="form-thanks" id="thanks" hidden>
+        <h2 data-edit="pf.thanksTitle">Thanks for applying!</h2>
+        <p data-edit="pf.thanksBody">We read every application as we build the lineup, and we'll be in touch by email.</p>
+        <p class="preview-sent" hidden>Preview only: the form isn't connected yet, so this wasn't sent anywhere.</p>
+        <a class="btn btn-navy" href="index.html">Back to the festival</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="config.js"></script>
+<script src="common.js"></script>
+<script src="forms.js"></script>
+</body>
+</html>

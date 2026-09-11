@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>List your group — SING! Edmonton</title>
+<meta name="description" content="List your choir or vocal group in the SING! Edmonton directory so singers can find you. It's free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="pages.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:site_name" content="SING! Edmonton">
+<meta property="og:title" content="List your choir or vocal group — SING! Edmonton">
+<meta property="og:description" content="Help singers find you. Listing your group is free.">
+<meta property="og:image" content="https://singedmonton.com/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div id="siteHeader"></div>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="preview-note" data-preview-note>Preview: this form isn't connected yet, so nothing will be sent</p>
+      <p class="eyebrow" data-edit="lc.eyebrow">Find a choir</p>
+      <h1 data-edit="lc.title">List your group</h1>
+      <p class="lede" data-edit="lc.lede">Help singers find you. Your listing shows when you rehearse, what joining looks like, and whether you have room. It's free.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap form-wrap">
+      <p class="form-intro" data-edit="lc.intro">Already listed? Send this form again with your changes and we'll update your listing. The SING! team checks every listing before it appears.</p>
+
+      <form class="sing-form" data-kind="choir" data-thanks="thanks">
+        <fieldset>
+          <legend data-edit="lc.l1">Your group</legend>
+          <div class="field req"><label for="name">Group name</label><input id="name" name="name" required maxlength="120" autocomplete="organization"></div>
+          <div class="field req"><label for="kind">What kind of group?</label>
+            <select id="kind" name="kind" required>
+              <option value="">Choose one</option>
+              <option>Choir</option><option>A cappella group</option><option>Barbershop or Sweet Adelines</option>
+              <option>Vocal jazz</option><option>Children or youth choir</option><option>Gospel choir</option>
+              <option>Community sing</option><option>Other</option>
+            </select>
+          </div>
+          <div class="field"><span class="label">Voices</span>
+            <div class="checks" data-multi="voices">
+              <label><input type="checkbox" name="voices" value="Mixed voices"> Mixed voices</label>
+              <label><input type="checkbox" name="voices" value="Treble voices"> Treble voices</label>
+              <label><input type="checkbox" name="voices" value="Tenor &amp; bass voices"> Tenor &amp; bass voices</label>
+              <label><input type="checkbox" name="voices" value="Children &amp; youth"> Children &amp; youth</label>
+              <label><input type="checkbox" name="voices" value="Seniors"> Seniors</label>
+            </div>
+          </div>
+          <div class="field req"><label for="about">About your group</label><textarea id="about" name="about" required maxlength="600"></textarea><p class="help">Two or three sentences: your style, your vibe, what you sing.</p></div>
+        </fieldset>
+
+        <fieldset>
+          <legend data-edit="lc.l2">Rehearsals</legend>
+          <div class="field req"><span class="label">Rehearsal days</span>
+            <div class="checks" data-multi="days" data-need-one="rehearsal day">
+              <label><input type="checkbox" name="days" value="Monday"> Mon</label>
+              <label><input type="checkbox" name="days" value="Tuesday"> Tue</label>
+              <label><input type="checkbox" name="days" value="Wednesday"> Wed</label>
+              <label><input type="checkbox" name="days" value="Thursday"> Thu</label>
+              <label><input type="checkbox" name="days" value="Friday"> Fri</label>
+              <label><input type="checkbox" name="days" value="Saturday"> Sat</label>
+              <label><input type="checkbox" name="days" value="Sunday"> Sun</label>
+            </div>
+          </div>
+          <div class="row-2">
+            <div class="field req"><label for="time">Rehearsal time</label><input id="time" name="time" required maxlength="60" placeholder="7:00–9:30pm"></div>
+            <div class="field"><label for="season">Season</label><input id="season" name="season" maxlength="60" placeholder="September to June"></div>
+          </div>
+          <div class="field req"><label for="location">Where you rehearse</label><input id="location" name="location" required maxlength="160" placeholder="Venue and neighbourhood"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend data-edit="lc.l3">Joining</legend>
+          <div class="row-2">
+            <div class="field req"><label for="joining">How do people join?</label>
+              <select id="joining" name="joining" required>
+                <option value="">Choose one</option>
+                <option>Open to everyone (no audition)</option><option>Audition required</option><option>Chat with the director first</option>
+              </select>
+            </div>
+            <div class="field req"><label for="accepting">Taking new members now?</label>
+              <select id="accepting" name="accepting" required>
+                <option value="">Choose one</option>
+                <option>Yes</option><option>Waitlist</option><option>Not right now</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label for="joiningDetails">What should new singers know?</label><textarea id="joiningDetails" name="joiningDetails" maxlength="600"></textarea><p class="help">What happens at a first rehearsal? Do people need to read music? When are auditions?</p></div>
+          <div class="row-2">
+            <div class="field"><label for="ages">Ages</label><input id="ages" name="ages" maxlength="60" placeholder="Adults, 14–18, all ages…"></div>
+            <div class="field"><label for="fees">Fees</label><input id="fees" name="fees" maxlength="80" placeholder="$150 a season, free…"></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend data-edit="lc.l4">How singers reach you</legend>
+          <p class="help" style="margin-bottom:16px">These are shown on your listing.</p>
+          <div class="row-2">
+            <div class="field"><label for="website">Website or social media</label><input id="website" name="website" inputmode="url" maxlength="300" placeholder="www.yourchoir.ca"></div>
+            <div class="field"><label for="publicEmail">Email for new singers</label><input id="publicEmail" name="publicEmail" type="email" maxlength="160"></div>
+          </div>
+          <div class="field"><label for="photo">Group photo or logo</label><input id="photo" type="file" accept="image/*"><p class="help">Optional. A wide photo works best.</p></div>
+        </fieldset>
+
+        <fieldset class="private">
+          <legend data-edit="lc.l5">About you</legend>
+          <p class="help">Only the SING! team sees this, in case we have a question. It's never shown on the website.</p>
+          <div class="row-2">
+            <div class="field req"><label for="contactName">Your name</label><input id="contactName" name="contactName" required maxlength="100" autocomplete="name"></div>
+            <div class="field req"><label for="contactEmail">Your email</label><input id="contactEmail" name="contactEmail" type="email" required maxlength="160" autocomplete="email"></div>
+          </div>
+        </fieldset>
+
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website_hp" tabindex="-1" autocomplete="off"></label></div>
+        <button class="btn btn-red" type="submit">Send my listing</button>
+        <p class="form-status" role="alert"></p>
+        <p class="help">See our <a href="privacy.html">privacy note</a>.</p>
+      </form>
+
+      <div class="form-thanks" id="thanks" hidden>
+        <h2 data-edit="lc.thanksTitle">Thanks! We've got it.</h2>
+        <p data-edit="lc.thanksBody">The SING! team will take a look, and once it's approved your group appears in the directory.</p>
+        <p class="preview-sent" hidden>Preview only: the form isn't connected yet, so this wasn't sent anywhere.</p>
+        <a class="btn btn-navy" href="choirs.html">Back to Find a choir</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="config.js"></script>
+<script src="common.js"></script>
+<script src="forms.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add your event — SING! Edmonton</title>
+<meta name="description" content="Share your group's concert, workshop, audition or sing-along on the SING! Edmonton community calendar. It's free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="pages.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:site_name" content="SING! Edmonton">
+<meta property="og:title" content="Add your event to the SING! community calendar">
+<meta property="og:description" content="Running a concert, workshop, audition or sing-along in Edmonton? Share it for free.">
+<meta property="og:image" content="https://singedmonton.com/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div id="siteHeader"></div>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="preview-note" data-preview-note>Preview: this form isn't connected yet, so nothing will be sent</p>
+      <p class="eyebrow" data-edit="se.eyebrow">Community calendar</p>
+      <h1 data-edit="se.title">Add your event</h1>
+      <p class="lede" data-edit="se.lede">Running a concert, workshop, audition or sing-along in the Edmonton area? Tell us about it and we'll share it on the SING! community calendar. It's free.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap form-wrap">
+      <p class="form-intro" data-edit="se.intro">The SING! team checks every event before it goes on the calendar. Vocal and choral events only, please.</p>
+
+      <form class="sing-form" data-kind="event" data-thanks="thanks">
+        <fieldset>
+          <legend data-edit="se.l1">The event</legend>
+          <div class="field req"><label for="group">Your group's name</label><input id="group" name="group" required maxlength="120" autocomplete="organization"></div>
+          <div class="field req"><label for="title">Event name</label><input id="title" name="title" required maxlength="140"></div>
+          <div class="field req"><label for="type">What kind of event is it?</label>
+            <select id="type" name="type" required>
+              <option value="">Choose one</option>
+              <option>Concert</option><option>Workshop or class</option><option>Auditions</option>
+              <option>Open rehearsal</option><option>Sing-along</option><option>Other</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend data-edit="se.l2">When and where</legend>
+          <div class="row-3">
+            <div class="field req"><label for="date">Date</label><input id="date" name="date" type="date" required></div>
+            <div class="field"><label for="time">Starts</label><input id="time" name="time" type="time"></div>
+            <div class="field"><label for="endTime">Ends</label><input id="endTime" name="endTime" type="time"></div>
+          </div>
+          <div class="field"><label for="endDate">More than one day? Last day</label><input id="endDate" name="endDate" type="date"></div>
+          <div class="field req"><label for="venue">Venue</label><input id="venue" name="venue" required maxlength="140" placeholder="Name of the hall, church or theatre"></div>
+          <div class="field"><label for="address">Address</label><input id="address" name="address" maxlength="200" autocomplete="street-address"><p class="help">So people can find it on a map.</p></div>
+        </fieldset>
+
+        <fieldset>
+          <legend data-edit="se.l3">Details</legend>
+          <div class="field req"><label for="description">Tell people about it</label><textarea id="description" name="description" required maxlength="1200"></textarea><p class="help" data-edit="se.descHelp">A few sentences: who's singing, what to expect, and who it's for.</p></div>
+          <div class="row-2">
+            <div class="field"><label for="price">Price</label><input id="price" name="price" maxlength="80" placeholder="Free, $20, $15 students…"></div>
+            <div class="field"><label for="link">Tickets or info link</label><input id="link" name="link" inputmode="url" maxlength="500" placeholder="www.yourgroup.ca/tickets"></div>
+          </div>
+          <div class="field"><label for="photo">Poster or photo</label><input id="photo" type="file" accept="image/*"><p class="help">Optional. A JPG or PNG works best.</p></div>
+        </fieldset>
+
+        <fieldset class="private">
+          <legend data-edit="se.l4">About you</legend>
+          <p class="help" data-edit="se.privacy">Only the SING! team sees this, in case we have a question. It's never shown on the website.</p>
+          <div class="row-2">
+            <div class="field req"><label for="contactName">Your name</label><input id="contactName" name="contactName" required maxlength="100" autocomplete="name"></div>
+            <div class="field req"><label for="contactEmail">Your email</label><input id="contactEmail" name="contactEmail" type="email" required maxlength="160" autocomplete="email"></div>
+          </div>
+        </fieldset>
+
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website_hp" tabindex="-1" autocomplete="off"></label></div>
+        <button class="btn btn-red" type="submit">Send for approval</button>
+        <p class="form-status" role="alert"></p>
+        <p class="help">See our <a href="privacy.html">privacy note</a>.</p>
+      </form>
+
+      <div class="form-thanks" id="thanks" hidden>
+        <h2 data-edit="se.thanksTitle">Thanks! We've got it.</h2>
+        <p data-edit="se.thanksBody">The SING! team will take a look, and once it's approved your event appears on the community calendar.</p>
+        <p class="preview-sent" hidden>Preview only: the form isn't connected yet, so this wasn't sent anywhere.</p>
+        <a class="btn btn-navy" href="calendar.html">Back to the calendar</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="config.js"></script>
+<script src="common.js"></script>
+<script src="forms.js"></script>
+</body>
+</html>

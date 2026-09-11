@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SING! Edmonton — A Cappella Festival · March 12–14, 2027</title>
+<meta name="description" content="SING! Edmonton is Edmonton's a cappella festival: concerts, workshops and school clinics, run by the SING! Prairies Society. Next festival March 12–14, 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="pages.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:site_name" content="SING! Edmonton">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SING! Edmonton — A Cappella Festival · March 12–14, 2027">
+<meta property="og:description" content="Concerts, workshops and Edmonton's own vocal groups. Edmonton's a cappella festival returns March 12–14, 2027.">
+<meta property="og:image" content="https://singedmonton.com/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div id="siteHeader"></div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow" data-edit="hero.eyebrow">Edmonton's a cappella festival</p>
+      <h1 class="hero-title">
+        <span class="hero-dates" data-edit="hero.dates">March 12–14, 2027</span>
+        <span class="hero-line" data-edit="hero.line">Just voices.<br>Nothing else.</span>
+      </h1>
+      <p class="hero-lede" data-edit="hero.lede">Three days of concerts, workshops and Edmonton's own vocal groups — for singers, fans, and anyone who's ever hummed along.</p>
+      <div class="hero-actions">
+        <a class="btn btn-red" href="#newsletter" data-edit="hero.cta1">Tell me when tickets drop</a>
+        <a class="btn btn-ghost" href="#festival" data-edit="hero.cta2">See the weekend</a>
+      </div>
+      <p class="countdown" id="countdown" aria-live="polite"></p>
+    </div>
+    <div class="voices" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </section>
+
+  <!-- FESTIVAL WEEKEND -->
+  <section class="section" id="festival">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow red" data-edit="fest.eyebrow">SING! Edmonton 2027</p>
+        <h2 data-edit="fest.title">The weekend</h2>
+        <p class="section-lede" data-edit="fest.lede">The full lineup is on its way. Here's the shape of the weekend so you can save the dates now.</p>
+      </div>
+      <div class="days" id="festivalDays"></div>
+    </div>
+  </section>
+
+  <!-- WHAT'S ON -->
+  <section class="section section-cream" id="calendar">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow red" data-edit="cal.eyebrow">All year round</p>
+        <h2 data-edit="cal.title">What's on</h2>
+        <p class="section-lede" data-edit="cal.lede">Concerts, workshops, auditions and sing-alongs from SING! and Edmonton's vocal groups.</p>
+      </div>
+      <ol class="calendar" id="calendarList"></ol>
+      <div class="section-actions">
+        <a class="btn btn-navy" href="calendar.html" data-edit="cal.all">See the full calendar</a>
+        <a class="btn btn-outline" href="submit-event.html" data-edit="cal.add">Add your group's event</a>
+      </div>
+
+      <details class="past">
+        <summary data-edit="past.title">Past seasons</summary>
+        <div id="pastList"></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- CHOIRS + SHOP -->
+  <section class="section">
+    <div class="wrap promo">
+      <a href="choirs.html">
+        <p class="eyebrow gold" data-edit="promo.choir.eyebrow">Find a choir</p>
+        <h3 data-edit="promo.choir.title">Looking for a place to sing?</h3>
+        <p data-edit="promo.choir.body">Browse Edmonton's choirs and vocal groups: when they rehearse, whether you need to audition, and how to join.</p>
+        <span class="go" data-edit="promo.choir.go">Find your choir →</span>
+      </a>
+      <a class="promo-red" href="shop.html">
+        <p class="eyebrow" style="color:#fff" data-edit="promo.shop.eyebrow">SING! merch</p>
+        <h3 data-edit="promo.shop.title">Wear the harmony</h3>
+        <p data-edit="promo.shop.body">Shirts, bags and more. Every purchase helps keep SING! singing.</p>
+        <span class="go" data-edit="promo.shop.go">Visit the shop →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section section-navy" id="education">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow gold" data-edit="edu.eyebrow">Education Week</p>
+        <h2 data-edit="edu.title">We come to your school</h2>
+        <p data-edit="edu.body">Every spring, SING! clinicians visit Edmonton high schools to run workshops and adjudicate vocal groups, then bring students together for a showcase.</p>
+        <a class="btn btn-red" href="mailto:info@singedmonton.com?subject=Education%20Week" data-edit="edu.cta">Ask about Education Week</a>
+      </div>
+      <ul class="stat-list">
+        <li><b data-edit="edu.stat1n">4</b><span data-edit="edu.stat1">schools visited in 2026</span></li>
+        <li><b data-edit="edu.stat2n">Apr 26</b><span data-edit="edu.stat2">Education Week 2027 begins</span></li>
+        <li><b data-edit="edu.stat3n">1</b><span data-edit="edu.stat3">high school showcase to finish the week</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- GET INVOLVED -->
+  <section class="section" id="involved">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow red" data-edit="inv.eyebrow">Get involved</p>
+        <h2 data-edit="inv.title">Help make it happen</h2>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <h3 data-edit="vol.title">Volunteer</h3>
+          <p data-edit="vol.body">Hang out with lovely, like-minded people and help run the festival. You get a free t-shirt and a ticket to the after party.</p>
+          <ul class="tags" data-edit="vol.list">
+            <li>Tickets &amp; merch</li><li>Silent auction</li><li>Ushering</li><li>Set-up &amp; teardown</li><li>Backstage</li><li>Driving</li><li>Food &amp; drinks</li><li>Planning next year</li>
+          </ul>
+          <a class="btn btn-navy" href="mailto:info@singedmonton.com?subject=Volunteering" data-edit="vol.cta">I want to volunteer</a>
+        </article>
+        <article class="card">
+          <h3 data-edit="perf.title">Perform at SING!</h3>
+          <p data-edit="perf.body">Sing in a vocal group, or perform solo? Tell us about yourself for the 2027 festival lineup.</p>
+          <a class="btn btn-navy" href="perform.html" data-edit="perf.cta">Apply to perform</a>
+        </article>
+        <article class="card">
+          <h3 data-edit="spo.title">Sponsor or advertise</h3>
+          <p data-edit="spo.body">Reach arts patrons, music fans, students, families and vocal groups across Edmonton and Alberta. Sponsorships and ads in the festival program are available. The program stays online for a full year.</p>
+          <a class="btn btn-navy" href="mailto:info@singedmonton.com?subject=Sponsorship" data-edit="spo.cta">Get the sponsorship package</a>
+        </article>
+        <article class="card card-red">
+          <h3 data-edit="don.title">Donate</h3>
+          <p data-edit="don.body">Your gift pays for workshops for young singers, venues and production, and a stronger vocal music community in Edmonton. SING! Prairies Society is a registered charity, so you'll get a tax receipt.</p>
+          <p class="small" data-edit="don.number">Charity number 723768348</p>
+          <a class="btn btn-white" href="https://www.canadahelps.org/en/charities/sing-prairies-society/" target="_blank" rel="noopener" data-edit="don.cta">Donate on CanadaHelps</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSORS -->
+  <section class="section section-cream sponsors-section">
+    <div class="wrap">
+      <h2 class="h-small" data-edit="spons.title">We love our sponsors</h2>
+      <ul class="sponsors">
+        <li><img src="images/sponsor-afa.png" alt="Alberta Foundation for the Arts" loading="lazy"></li>
+        <li><img src="images/sponsor-macewan.png" alt="MacEwan University" loading="lazy"></li>
+        <li><img src="images/sponsor-eac.jpg" alt="Edmonton Arts Council" loading="lazy"></li>
+        <li><img src="images/sponsor-long-mcquade.png" alt="Long &amp; McQuade" loading="lazy"></li>
+        <li><img src="images/sponsor-amef.png" alt="Alberta Music Education Foundation" loading="lazy"></li>
+        <li><img src="images/sponsor-simple-connections.jpg" alt="Simple Connections" loading="lazy"></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="section newsletter" id="newsletter">
+    <div class="wrap narrow">
+      <h2 data-edit="news.title">Be first to hear</h2>
+      <p data-edit="news.body">Lineup announcements, ticket sales and a few behind-the-scenes moments. No spam, just harmony.</p>
+      <form class="signup" id="signup">
+        <label class="sr" for="fname">First name</label>
+        <input id="fname" name="fname" placeholder="First name (optional)" autocomplete="given-name">
+        <label class="sr" for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="Email address" required autocomplete="email">
+        <button class="btn btn-red" type="submit">Sign me up</button>
+      </form>
+      <p class="signup-note" id="signupNote" hidden>Thanks! (Draft site — this form isn't connected to your mailing list yet.)</p>
+    </div>
+  </section>
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="events.js"></script>
+<script src="config.js"></script>
+<script src="common.js"></script>
+<script src="home.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find a choir — SING! Edmonton</title>
+<meta name="description" content="Find a choir or vocal group to join in Edmonton: rehearsal times, joining requirements, and whether they're taking new members.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="pages.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:site_name" content="SING! Edmonton">
+<meta property="og:title" content="Find a choir in Edmonton — SING! Edmonton">
+<meta property="og:description" content="Rehearsal times, joining requirements, and which groups are taking new members.">
+<meta property="og:image" content="https://singedmonton.com/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div id="siteHeader"></div>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="preview-note" data-preview-note>Preview: example listings are shown until the directory is connected</p>
+      <p class="eyebrow" data-edit="ch.eyebrow">Find a choir</p>
+      <h1 data-edit="ch.title">Find your choir</h1>
+      <p class="lede" data-edit="ch.lede">Choirs and vocal groups around Edmonton: when they rehearse, who they're looking for, and how to join. New to singing? Look for groups marked “no audition”.</p>
+      <div class="head-actions">
+        <a class="btn btn-red" href="list-your-choir.html" data-edit="ch.list">List your group</a>
+        <a class="btn btn-ghost" href="calendar.html" data-edit="ch.cal">See what's on</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream">
+    <div class="wrap">
+      <div class="filters">
+        <input type="search" id="choirSearch" placeholder="Search by name, area or style" aria-label="Search choirs">
+        <select id="kindFilter" aria-label="Kind of group"></select>
+        <select id="voiceFilter" aria-label="Voices"></select>
+      </div>
+      <div class="filters">
+        <div class="chips" id="dayChips" role="group" aria-label="Rehearsal day"></div>
+        <div class="chips">
+          <button type="button" class="chip" id="noAudition" aria-pressed="false">No audition needed</button>
+          <button type="button" class="chip" id="accepting" aria-pressed="false">Taking new members</button>
+        </div>
+      </div>
+      <p class="result-count" id="choirCount"></p>
+      <p class="load-note" id="choirNote" hidden>The directory couldn't load just now. Try again in a minute.</p>
+      <div class="choir-grid" id="choirGrid"><p class="empty">Loading…</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <h2 data-edit="ch.ctaTitle">Run a choir or vocal group?</h2>
+      <p class="section-lede" style="margin:16px auto 28px" data-edit="ch.ctaBody">Listing your group is free. Tell singers when you rehearse, what joining looks like, and whether you have room.</p>
+      <a class="btn btn-red" href="list-your-choir.html" data-edit="ch.ctaBtn">List your group</a>
+    </div>
+  </section>
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="config.js"></script>
+<script src="common.js"></script>
+<script src="choirs.js"></script>
+</body>
+</html>
