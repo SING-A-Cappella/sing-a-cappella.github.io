@@ -49,7 +49,7 @@ h3 { font-size: 1.9rem; color: var(--navy); }
 .hero { position: relative; overflow: hidden; background: radial-gradient(ellipse at 75% 20%, #2c3872 0%, var(--navy) 45%, var(--navy-deep) 100%); color: #fff; padding: clamp(70px, 12vw, 140px) 0 180px; }
 .hero-inner { position: relative; z-index: 2; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 .eyebrow { font-weight: 600; text-transform: uppercase; letter-spacing: .14em; font-size: .8rem; margin: 0 0 14px; color: var(--gold); }
-.eyebrow.red { color: var(--red); }
+.eyebrow.red { color: var(--red-dark); } /* darker red so small text passes contrast on cream */
 .eyebrow.gold { color: var(--gold); }
 .hero-title { display: flex; flex-direction: column; gap: 10px; }
 .hero-dates { font-size: clamp(1.6rem, 3.4vw, 2.4rem); color: var(--red); background: #fff; align-self: flex-start; padding: 6px 14px 4px; border-radius: 8px; transform: rotate(-2deg); }

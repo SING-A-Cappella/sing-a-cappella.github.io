@@ -66,7 +66,16 @@
       <p><a href="submit-event.html">Add your event</a></p>
       <p><a href="choirs.html">Find a choir</a> · <a href="list-your-choir.html">List your group</a></p>
       <p><a href="perform.html">Perform at SING!</a></p>
+      <p><a href="volunteer.html">Volunteer</a></p>
+      <p><a href="sponsor.html">Sponsor SING!</a></p>
       <p><a href="shop.html">Shop</a></p>
+    </div>
+    <div>
+      <h4>About</h4>
+      <p><a href="about.html">Who we are</a></p>
+      <p><a href="faq.html">Questions</a></p>
+      <p><a href="access.html">Access</a></p>
+      <p><a href="privacy.html">Privacy</a></p>
     </div>
     <div>
       <h4>Say hi</h4>
@@ -88,8 +97,11 @@
   <p class="fine">© ${new Date().getFullYear()} SING! Prairies Society · <button type="button" class="linklike" id="editStart">Team: edit this page</button></p>
 </footer>`;
 
+  const skipLink = `<a class="skip" href="#main">Skip to the main content</a>`;
   const headerSlot = document.getElementById("siteHeader");
-  if (headerSlot) headerSlot.outerHTML = header;
+  if (headerSlot) headerSlot.outerHTML = skipLink + header;
+  const main = document.querySelector("main");
+  if (main) { main.id = main.id || "main"; main.setAttribute("tabindex", "-1"); }
   const footerSlot = document.getElementById("siteFooter");
   if (footerSlot) footerSlot.outerHTML = footer;
 
@@ -99,7 +111,14 @@
     const open = top.classList.toggle("open");
     menuBtn.setAttribute("aria-expanded", String(open));
   });
-  document.querySelectorAll("[data-preview-note]").forEach(el => { el.hidden = !!C.backendUrl; });
+  // Listings gathered from groups' own websites say so, instead of saying "example".
+  const seededCalendar = () => !!(window.SING_COMMUNITY_SEED && window.SING_COMMUNITY_SEED.length);
+  const seededChoirs = () => !!(window.SING_CHOIRS_SEED && window.SING_CHOIRS_SEED.length);
+  document.querySelectorAll("[data-preview-note]").forEach(el => {
+    el.hidden = !!C.backendUrl;
+    const seeded = el.dataset.previewNote === "calendar" ? seededCalendar() : el.dataset.previewNote === "choirs" ? seededChoirs() : false;
+    if (seeded && el.dataset.seededText) el.textContent = el.dataset.seededText;
+  });
 
   // ---------- backend ----------
   // Reading uses JSONP (a <script> tag) because Apps Script can't answer a browser's
@@ -157,7 +176,7 @@
   function loadCalendar() {
     return calendarPromise || (calendarPromise = (async () => {
       const snapshot = (window.SING_EVENTS && window.SING_EVENTS.events) || [];
-      if (!C.backendUrl) return { sing: snapshot, community: exampleEvents(), preview: true };
+      if (!C.backendUrl) return { sing: snapshot, community: seededCalendar() ? window.SING_COMMUNITY_SEED : exampleEvents(), preview: true };
       try {
         const d = await jsonp({ feed: "calendar" });
         if (d.ok) return { sing: d.sing && d.sing.length ? d.sing : snapshot, community: d.community || [] };
@@ -201,9 +220,10 @@
     const kicker = (it.example ? '<span class="tag tag-example">Example</span>' : "")
       + (it.source === "sing" ? '<span class="tag tag-sing">SING!</span>' : `<span class="tag">${esc(it.group)}</span>`)
       + (it.type && !it.featured ? `<span class="cal-type">${esc(it.type)}</span>` : "");
-    const details = full && it.source === "community" ? `
+    const details = full ? `
         ${it.description ? `<p class="cal-desc">${esc(it.description)}</p>` : ""}
-        ${it.price || it.address ? `<p class="cal-facts">${it.price ? `<span>${esc(it.price)}</span>` : ""}${it.address ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(it.address)}" target="_blank" rel="noopener">${esc(it.address)}</a>` : ""}</p>` : ""}` : "";
+        ${it.price || it.address || it.source ? `<p class="cal-facts">${it.price ? `<span>${esc(it.price)}</span>` : ""}${it.address ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(it.address)}" target="_blank" rel="noopener">${esc(it.address)}</a>` : ""}${safeUrl(it.source) ? `<a class="listed" href="${esc(safeUrl(it.source))}" target="_blank" rel="noopener">Listed from ${esc(it.sourceName || "their website")}</a>` : ""}</p>` : ""}
+        <p class="cal-facts"><a class="listed" href="${esc(addToCalendarUrl(it))}" target="_blank" rel="noopener">Add to my calendar</a></p>` : "";
     return `<li class="cal-row${it.featured ? " featured" : ""}${full ? " full" : ""}">
       <div class="cal-date"><span class="cal-month">${MONTHS[d.getMonth()]} ${d.getFullYear()}</span><span class="cal-day">${d.getDate()}</span></div>
       <div class="cal-body">
@@ -215,6 +235,27 @@
       ${full && image ? `<img class="cal-img" src="${esc(image)}" alt="" loading="lazy">` : ""}
       ${action}
     </li>`;
+  }
+
+  // "Add to my calendar" for one event — Google Calendar's own add-an-event page.
+  function addToCalendarUrl(it) {
+    const stamp = (day, time) => day.replace(/-/g, "") + (time ? "T" + time.replace(":", "") + "00" : "");
+    const endDay = it.endDate || it.date;
+    let dates;
+    if (it.time) {
+      const endTime = it.endTime || (it.endDate ? it.time : `${String(Math.min(23, +it.time.slice(0, 2) + 2)).padStart(2, "0")}:${it.time.slice(3, 5)}`);
+      dates = `${stamp(it.date, it.time)}/${stamp(endDay, endTime)}`;
+    } else {
+      const next = addDays(parseDate(endDay), 1);
+      dates = `${stamp(it.date)}/${isoDay(next).replace(/-/g, "")}`;
+    }
+    const params = new URLSearchParams({
+      action: "TEMPLATE", ctz: "America/Edmonton", dates,
+      text: it.source === "sing" || it.group === "SING! Edmonton" ? `SING! Edmonton: ${it.title}` : `${it.title} — ${it.group || ""}`.trim(),
+      location: [it.venue, it.address].filter(Boolean).join(", "),
+      details: [it.description, safeUrl(it.link)].filter(Boolean).join("\n\n"),
+    });
+    return "https://calendar.google.com/calendar/render?" + params;
   }
 
   function subscribeUrls() {
@@ -232,7 +273,7 @@
     ].map(c => Object.assign({ example: true }, c));
   }
   function loadChoirs() {
-    if (!C.backendUrl) return Promise.resolve({ choirs: exampleChoirs(), preview: true });
+    if (!C.backendUrl) return Promise.resolve({ choirs: seededChoirs() ? window.SING_CHOIRS_SEED : exampleChoirs(), preview: true });
     return jsonp({ feed: "choirs" })
       .then(d => ({ choirs: d.ok ? d.choirs || [] : [], offline: !d.ok }))
       .catch(() => ({ choirs: [], offline: true }));

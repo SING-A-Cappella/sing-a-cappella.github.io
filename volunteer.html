@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Volunteer — SING! Edmonton</title>
+<meta name="description" content="Volunteer at SING! Edmonton's a cappella festival: ushering, tickets and merch, backstage, set-up and more. Free t-shirt and after-party ticket.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="pages.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:site_name" content="SING! Edmonton">
+<meta property="og:title" content="Volunteer at SING! Edmonton">
+<meta property="og:description" content="Spend a weekend with lovely people who like harmony. Free t-shirt and a ticket to the after party.">
+<meta property="og:image" content="https://singedmonton.com/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div id="siteHeader"></div>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="preview-note" data-preview-note="volunteer">Preview: this form isn't connected yet, so nothing will be sent</p>
+      <p class="eyebrow" data-edit="vl.eyebrow">Get involved</p>
+      <h1 data-edit="vl.title">Come help out</h1>
+      <p class="lede" data-edit="vl.lede">Festivals run on volunteers. Spend a shift or a whole weekend with lovely, like-minded people, hear a lot of good singing, and take home a free t-shirt and a ticket to the after party.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap form-wrap">
+      <p class="form-intro" data-edit="vl.intro">Tell us what you'd enjoy and when you're free. We'll be in touch closer to the date with shifts, and you can always say no to one.</p>
+
+      <form class="sing-form" data-kind="volunteer" data-thanks="thanks">
+        <fieldset>
+          <legend data-edit="vl.l1">About you</legend>
+          <div class="row-2">
+            <div class="field req"><label for="name">Your name</label><input id="name" name="name" required maxlength="100" autocomplete="name"></div>
+            <div class="field req"><label for="contactEmail">Email</label><input id="contactEmail" name="contactEmail" type="email" required maxlength="160" autocomplete="email"></div>
+          </div>
+          <div class="row-2">
+            <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" maxlength="40" autocomplete="tel"><p class="help">Handy on festival days.</p></div>
+            <div class="field"><label for="age">Your age</label>
+              <select id="age" name="age"><option value="">Prefer not to say</option><option>18 or older</option><option>Under 18</option></select>
+              <p class="help">A few jobs have an age minimum; most don't.</p>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend data-edit="vl.l2">What would you enjoy?</legend>
+          <div class="field req"><span class="label">Pick as many as you like</span>
+            <div class="checks" data-multi="jobs" data-need-one="job">
+              <label><input type="checkbox" name="jobs" value="Tickets &amp; merch"> Tickets &amp; merch</label>
+              <label><input type="checkbox" name="jobs" value="Silent auction"> Silent auction</label>
+              <label><input type="checkbox" name="jobs" value="Ushering"> Ushering</label>
+              <label><input type="checkbox" name="jobs" value="Set-up &amp; teardown"> Set-up &amp; teardown</label>
+              <label><input type="checkbox" name="jobs" value="Backstage or workshops"> Backstage or workshops</label>
+              <label><input type="checkbox" name="jobs" value="Driving &amp; logistics"> Driving &amp; logistics</label>
+              <label><input type="checkbox" name="jobs" value="Food &amp; drinks"> Food &amp; drinks</label>
+              <label><input type="checkbox" name="jobs" value="Photos &amp; video"> Photos &amp; video</label>
+              <label><input type="checkbox" name="jobs" value="Planning next year"> Planning next year</label>
+              <label><input type="checkbox" name="jobs" value="Wherever I am needed"> Wherever I'm needed</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend data-edit="vl.l3">When are you free?</legend>
+          <div class="field"><span class="label">Tick anything that works</span>
+            <div class="checks" data-multi="available">
+              <label><input type="checkbox" name="available" value="Festival weekend in March 2027"> Festival weekend, March 2027</label>
+              <label><input type="checkbox" name="available" value="Community Week in March"> Community Week, March</label>
+              <label><input type="checkbox" name="available" value="Education Week in April"> Education Week, April</label>
+              <label><input type="checkbox" name="available" value="Other concerts through the year"> Other concerts through the year</label>
+              <label><input type="checkbox" name="available" value="Helping before the festival"> Helping in the lead-up</label>
+              <label><input type="checkbox" name="available" value="Helping after the festival"> Helping afterwards</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend data-edit="vl.l4">A couple of details</legend>
+          <div class="field"><label for="shirt">T-shirt size</label>
+            <select id="shirt" name="shirt">
+              <option value="">Choose one</option>
+              <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option>
+            </select>
+          </div>
+          <div class="field"><label for="experience">Have you volunteered at something like this before?</label><textarea id="experience" name="experience" maxlength="600" style="min-height:90px"></textarea><p class="help">No experience needed. We'll show you everything.</p></div>
+          <div class="field"><label for="notes">Anything we should know?</label><textarea id="notes" name="notes" maxlength="600" style="min-height:90px"></textarea><p class="help">Accessibility needs, a friend you'd like to be paired with, jobs you'd rather avoid.</p></div>
+          <div class="field"><label for="heardFrom">Did someone from SING! ask you to come along?</label><input id="heardFrom" name="heardFrom" maxlength="120" placeholder="Their name, or how you heard about us"></div>
+        </fieldset>
+
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website_hp" tabindex="-1" autocomplete="off"></label></div>
+        <button class="btn btn-red" type="submit">Sign me up</button>
+        <p class="form-status" role="alert"></p>
+        <p class="help">Your details stay with the SING! team. See our <a href="privacy.html">privacy note</a>.</p>
+      </form>
+
+      <div class="form-thanks" id="thanks" hidden>
+        <h2 data-edit="vl.thanksTitle">Wonderful — thank you!</h2>
+        <p data-edit="vl.thanksBody">You're on the list. We'll email you before the festival with jobs and times, and you can pick what suits you.</p>
+        <p class="preview-sent" hidden>Preview only: the form isn't connected yet, so this wasn't sent anywhere.</p>
+        <a class="btn btn-navy" href="index.html">Back to the festival</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="config.js"></script>
+<script src="common.js"></script>
+<script src="forms.js"></script>
+</body>
+</html>

@@ -52,7 +52,8 @@
           ${site ? `<a class="btn btn-navy btn-small" href="${S.esc(site)}" target="_blank" rel="noopener">Visit their website</a>` : ""}
           ${email ? `<a class="btn btn-outline btn-small" href="mailto:${S.esc(email)}?subject=${encodeURIComponent("Joining " + c.name)}">Email them</a>` : ""}
         </div>
-        ${updated ? `<p class="updated">Listing updated ${S.MONTHS_LONG[updated.getMonth()]} ${updated.getFullYear()}</p>` : ""}
+        ${S.safeUrl(c.source) ? `<p class="updated">${c.verified ? `Checked ${S.MONTHS_LONG[S.parseDate(c.verified).getMonth()]} ${S.parseDate(c.verified).getFullYear()} · ` : ""}from <a class="listed" href="${S.esc(S.safeUrl(c.source))}" target="_blank" rel="noopener">${S.esc(c.sourceName || "their website")}</a> · <a href="list-your-choir.html">is this your group?</a></p>`
+          : updated ? `<p class="updated">Listing updated ${S.MONTHS_LONG[updated.getMonth()]} ${updated.getFullYear()}</p>` : ""}
       </div>
     </article>`;
   }

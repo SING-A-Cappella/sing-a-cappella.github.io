@@ -1,5 +1,10 @@
 /* Calendar, choir directory, forms, shop, and the parts shared across pages. */
 
+.skip { position: absolute; left: -9999px; top: 0; z-index: 60; background: var(--gold); color: var(--navy); font-weight: 700; padding: 12px 18px; border-radius: 0 0 10px 0; text-decoration: none; }
+.skip:focus { left: 0; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+main:focus { outline: none; }
+.listed { font-weight: 500; }
 .btn-outline { border-color: var(--navy); color: var(--navy); background: transparent; }
 .btn-disabled, .btn-disabled:hover { background: var(--line); color: var(--muted); cursor: default; transform: none; border-color: transparent; }
 .section-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
