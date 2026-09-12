@@ -17,5 +17,11 @@ window.SING_CONFIG = {
   products: [],
 
   // Wording changed with "Team: edit this page" → "Copy my changes", pasted here to publish it.
-  publishedEdits: {}
+  publishedEdits: {
+    // SING! announced this in its own 2026 festival program: Deke Sharon, music director
+    // of the Pitch Perfect films, brings a sing-along to Edmonton on Friday 12 March 2027.
+    // Remove these two lines if it isn't ready to be on the website yet.
+    "event.3c15595a-f75a-80ea-beb7-ebe7e0634e03": "Pitch Perfect Sing-Along with Deke Sharon",
+    "fest.lede": "Friday night opens with a Pitch Perfect Sing-Along led by Deke Sharon, music director of the films. The rest of the lineup is on its way — here's the shape of the weekend so you can save the dates now."
+  }
 };
