@@ -36,7 +36,7 @@
   function render() {
     const q = state.q.trim().toLowerCase();
     const shown = items.filter(i =>
-      (state.source === "all" || i.source === state.source) &&
+      (state.source === "all" || i.kind === state.source) &&
       (!state.type || i.type === state.type) &&
       (!q || [i.title, i.group, i.venue, i.address, i.description, i.type].join(" ").toLowerCase().includes(q)));
     let month = "";

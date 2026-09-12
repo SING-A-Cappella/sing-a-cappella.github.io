@@ -50,7 +50,7 @@
   <nav class="nav" id="mainNav" aria-label="Main">
     ${NAV.map(([href, label, key]) => `<a href="${href}"${key === section ? ' aria-current="page"' : ""}>${label}</a>`).join("")}
   </nav>
-  <a class="btn btn-red btn-small" href="index.html#newsletter" data-edit="nav.cta">Tickets</a>
+  <a class="btn btn-red btn-small" href="index.html#tickets" data-edit="nav.cta">Tickets</a>
 </header>`;
 
   const footer = `
@@ -91,7 +91,7 @@
     </div>
     <div>
       <h4>SING! Prairies Society</h4>
-      <p data-edit="foot.charity">Registered charity 723768348</p>
+      <p data-edit="foot.charity">A registered Canadian charity</p>
       <p><a href="https://www.canadahelps.org/en/charities/sing-prairies-society/" target="_blank" rel="noopener">Donate</a></p>
     </div>
   </div>
@@ -189,11 +189,12 @@
   // SING! events (top level only) and community events, as one date-ordered list.
   function calendarItems(sing, community) {
     const fest = C.festival && C.festival.name;
+    // "kind" says whose event it is; "source" (on community listings) is the page it came from.
     const a = sing.filter(e => !e.parent && e.date).map(e => ({
-      id: e.id, source: "sing", featured: e.title === fest, title: publicTitle(e), tentative: e.tentative,
+      id: e.id, kind: "sing", featured: e.title === fest, title: publicTitle(e), tentative: e.tentative,
       type: e.type, date: e.date, endDate: e.endDate, time: e.time, link: e.ticketUrl || "",
     }));
-    const b = community.filter(e => e.date).map(e => Object.assign({ source: "community" }, e));
+    const b = community.filter(e => e.date).map(e => Object.assign({}, e, { kind: "community" }));
     return a.concat(b).sort((x, y) => (x.date + (x.time || "")).localeCompare(y.date + (y.time || "")));
   }
   const upcoming = items => items.filter(i => parseDate(i.endDate || i.date) >= today());
@@ -217,19 +218,20 @@
     const d = parseDate(it.date);
     const link = safeUrl(it.link), image = safeUrl(it.image);
     const action = it.featured ? `<a class="btn btn-red" href="index.html#festival">See the weekend</a>`
-      : link ? `<a class="btn btn-red" href="${esc(link)}" target="_blank" rel="noopener">${it.source === "sing" ? "Tickets" : "Tickets & info"}</a>` : "";
+      : link ? `<a class="btn btn-red" href="${esc(link)}" target="_blank" rel="noopener">${it.kind === "sing" ? "Tickets" : "Tickets & info"}</a>` : "";
     const kicker = (it.example ? '<span class="tag tag-example">Example</span>' : "")
-      + (it.source === "sing" ? '<span class="tag tag-sing">SING!</span>' : `<span class="tag">${esc(it.group)}</span>`)
-      + (it.type && !it.featured ? `<span class="cal-type">${esc(it.type)}</span>` : "");
+      + (it.kind === "sing" ? '<span class="tag tag-sing">SING!</span>' : `<span class="tag">${esc(it.group)}</span>`)
+      // A week-long thing isn't "a concert", so only single-day events get a type tag.
+      + (it.type && !it.featured && !(it.endDate && it.endDate !== it.date) ? `<span class="cal-type">${esc(it.type)}</span>` : "");
     const details = full ? `
-        ${it.description ? `<p class="cal-desc">${esc(it.description)}</p>` : ""}
+        ${it.kind === "community" && it.description ? `<p class="cal-desc">${esc(it.description)}</p>` : ""}
         ${it.price || it.address || it.source ? `<p class="cal-facts">${it.price ? `<span>${esc(it.price)}</span>` : ""}${it.address ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(it.address)}" target="_blank" rel="noopener">${esc(it.address)}</a>` : ""}${safeUrl(it.source) ? `<a class="listed" href="${esc(safeUrl(it.source))}" target="_blank" rel="noopener">Listed from ${esc(it.sourceName || "their website")}</a>` : ""}</p>` : ""}
-        <p class="cal-facts"><a class="listed" href="${esc(addToCalendarUrl(it))}" target="_blank" rel="noopener">Add to my calendar</a></p>` : "";
+        <p class="cal-facts"><a class="listed" href="${esc(addToCalendarUrl(it))}" target="_blank" rel="noopener" aria-label="Add ${esc(it.title)} to my calendar">Add to my calendar</a></p>` : "";
     return `<li class="cal-row${it.featured ? " featured" : ""}${full ? " full" : ""}">
       <div class="cal-date"><span class="cal-month">${MONTHS[d.getMonth()]} ${d.getFullYear()}</span><span class="cal-day">${d.getDate()}</span></div>
       <div class="cal-body">
         <div class="cal-kicker">${kicker}</div>
-        <div class="cal-title"${it.source === "sing" ? ` data-edit="event.${esc(it.id)}"` : ""}>${esc(it.title)}${it.tentative ? ' <span class="soon">— details coming soon</span>' : ""}</div>
+        <div class="cal-title"${it.kind === "sing" ? ` data-edit="event.${esc(it.id)}"` : ""}>${esc(it.title)}${it.tentative ? ' <span class="soon">— details coming soon</span>' : ""}</div>
         <div class="cal-meta">${esc([whenText(it), it.venue].filter(Boolean).join(" · "))}</div>
         ${details}
       </div>
@@ -252,7 +254,7 @@
     }
     const params = new URLSearchParams({
       action: "TEMPLATE", ctz: "America/Edmonton", dates,
-      text: it.source === "sing" || it.group === "SING! Edmonton" ? `SING! Edmonton: ${it.title}` : `${it.title} — ${it.group || ""}`.trim(),
+      text: it.kind === "sing" ? `SING! Edmonton: ${it.title}` : `${it.title} — ${it.group || ""}`.trim(),
       location: [it.venue, it.address].filter(Boolean).join(", "),
       details: [it.description, safeUrl(it.link)].filter(Boolean).join("\n\n"),
     });

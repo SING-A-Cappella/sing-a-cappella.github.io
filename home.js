@@ -56,7 +56,7 @@
   const byYear = {};
   past.forEach(e => (byYear[e.date.slice(0, 4)] ||= []).push(e));
   document.getElementById("pastList").innerHTML = Object.keys(byYear).sort().reverse().map(y =>
-    `<div class="past-year"><h4>${y}</h4><ul>${byYear[y].map(e => `<li>${S.esc(S.tidy(e.title))}</li>`).join("")}</ul></div>`
+    `<div class="past-year"><h3>${y}</h3><ul>${byYear[y].map(e => `<li>${S.esc(S.tidy(e.title))}</li>`).join("")}</ul></div>`
   ).join("");
 
   S.refreshEditable();
