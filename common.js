@@ -218,7 +218,7 @@
     const d = parseDate(it.date);
     const link = safeUrl(it.link), image = safeUrl(it.image);
     const action = it.featured ? `<a class="btn btn-red" href="index.html#festival">See the weekend</a>`
-      : link ? `<a class="btn btn-red" href="${esc(link)}" target="_blank" rel="noopener">${it.kind === "sing" ? "Tickets" : "Tickets & info"}</a>` : "";
+      : link ? `<a class="btn btn-red" href="${esc(link)}" target="_blank" rel="noopener">${it.kind === "sing" ? "Tickets" : it.type === "Concert" ? "Tickets & info" : "Details"}</a>` : "";
     const kicker = (it.example ? '<span class="tag tag-example">Example</span>' : "")
       + (it.kind === "sing" ? '<span class="tag tag-sing">SING!</span>' : `<span class="tag">${esc(it.group)}</span>`)
       // A week-long thing isn't "a concert", so only single-day events get a type tag.
