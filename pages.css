@@ -89,6 +89,9 @@ main:focus { outline: none; }
 .facts { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin: 4px 0 0; font-size: .92rem; }
 .facts dt { font-weight: 600; color: var(--navy); }
 .facts dd { margin: 0; }
+.job-list { max-width: 780px; gap: 10px 24px; font-size: 1rem; }
+.job-list dt { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: 1.25rem; }
+.job-list dd { color: var(--muted); }
 .choir-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 8px; }
 .updated { font-size: .78rem; }
 
