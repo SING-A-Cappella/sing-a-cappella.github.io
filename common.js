@@ -73,6 +73,7 @@
     <div>
       <h4>About</h4>
       <p><a href="about.html">Who we are</a></p>
+      <p><a href="what-its-like.html">Never been to a show?</a></p>
       <p><a href="faq.html">Questions</a></p>
       <p><a href="access.html">Access</a></p>
       <p><a href="privacy.html">Privacy</a></p>
