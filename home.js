@@ -8,25 +8,6 @@
   if (days > 1) cd.innerHTML = `<b>${days}</b> days until the festival`;
   else if (days > -F.days) cd.innerHTML = "<b>It's festival weekend!</b>";
 
-  // Newsletter → Mailchimp's own sign-up address (read through a <script> tag, like the backend feeds)
-  const signup = document.getElementById("signup"), signupNote = document.getElementById("signupNote");
-  signup.addEventListener("submit", ev => {
-    ev.preventDefault();
-    const say = text => { signupNote.textContent = text; signupNote.hidden = false; };
-    const mc = S.C.mailchimpSignupUrl;
-    if (!mc) return say("Thanks! (Preview: sign-ups aren't connected to the mailing list yet.)");
-    const cb = "mcSignup" + Date.now();
-    const s = document.createElement("script");
-    window[cb] = r => {
-      delete window[cb]; s.remove();
-      say(r.result === "success" ? "Thanks! Check your inbox to confirm your subscription."
-        : String(r.msg || "That didn't work. Please try again.").replace(/<[^>]+>/g, "").replace(/^\d+ - /, ""));
-    };
-    s.onerror = () => say("That didn't work. Please try again.");
-    s.src = mc.replace("/post?", "/post-json?") + "&" + new URLSearchParams({ EMAIL: signup.email.value, FNAME: signup.fname.value, c: cb });
-    document.head.appendChild(s);
-  });
-
   const { sing, community } = await S.loadCalendar();
 
   // ---- Festival weekend, grouped by day (always all festival days) ----

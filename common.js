@@ -299,6 +299,43 @@
       .catch(() => ({ products: [], shippingFee: 0, offline: true }));
   }
 
+  // ---------- newsletter sign-up, wherever it appears ----------
+  // Goes straight to Mailchimp's own sign-up address (read through a <script> tag, like the feeds).
+  function bindSignup(form) {
+    const note = form.parentElement.querySelector(".signup-note");
+    const say = text => { note.textContent = text; note.hidden = false; };
+    form.addEventListener("submit", ev => {
+      ev.preventDefault();
+      const mc = C.mailchimpSignupUrl;
+      if (!mc) return say("Thanks! (Preview: sign-ups aren't connected to the mailing list yet.)");
+      const cb = "mcSignup" + Date.now();
+      const s = document.createElement("script");
+      window[cb] = r => {
+        delete window[cb]; s.remove();
+        say(r.result === "success" ? "Thanks! Check your inbox to confirm your subscription."
+          : String(r.msg || "That didn't work. Please try again.").replace(/<[^>]+>/g, "").replace(/^\d+ - /, ""));
+      };
+      s.onerror = () => say("That didn't work. Please try again.");
+      s.src = mc.replace("/post?", "/post-json?") + "&" + new URLSearchParams({ EMAIL: form.email.value, FNAME: form.fname ? form.fname.value : "", c: cb });
+      document.head.appendChild(s);
+    });
+  }
+
+  // A short sign-up block any page can drop in with <div data-signup="…heading…"></div>
+  document.querySelectorAll("[data-signup]").forEach((slot, i) => {
+    slot.className = "wrap narrow signup-block";
+    slot.innerHTML = `
+      <h2 data-edit="signup.title.${i}">${esc(slot.dataset.signup || "Be first to hear")}</h2>
+      <p data-edit="signup.body.${i}">Lineup announcements and first word when tickets go on sale, about once a month.</p>
+      <form class="signup">
+        <label class="sr" for="signupEmail${i}">Email</label>
+        <input id="signupEmail${i}" name="email" type="email" placeholder="Email address" required autocomplete="email">
+        <button class="btn btn-red" type="submit">Sign me up</button>
+      </form>
+      <p class="signup-note" hidden></p>`;
+  });
+  document.querySelectorAll("form.signup").forEach(bindSignup);
+
   // ---------- one choir's card, shared by the directory and the quiz ----------
   const openToAll = c => /no audition/i.test(c.joining || "");
   const ACCEPTING = { Yes: ["badge-gold", "Taking new members"], Waitlist: ["badge-grey", "Waitlist"], "Not right now": ["badge-grey", "Not taking new members right now"] };
