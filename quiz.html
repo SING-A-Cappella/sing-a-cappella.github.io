@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find your choir quiz — SING! Edmonton</title>
+<meta name="description" content="Answer six quick questions and we'll suggest Edmonton choirs and vocal groups that fit when you're free, what you want to sing, and whether you'd audition.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="pages.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:site_name" content="SING! Edmonton">
+<meta property="og:title" content="Find your choir: take the quiz">
+<meta property="og:description" content="Six questions, and we'll match you with Edmonton choirs that fit your nights, your voice and your nerve.">
+<meta property="og:image" content="https://singedmonton.com/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div id="siteHeader"></div>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow" data-edit="qz.eyebrow">Find a choir</p>
+      <h1 data-edit="qz.title">Which choir<br>is your choir?</h1>
+      <p class="lede" data-edit="qz.lede">Six quick questions about when you're free, what you'd love to sing and how you feel about auditions. We'll point you at the Edmonton groups that fit.</p>
+    </div>
+  </section>
+
+  <section class="section section-cream">
+    <div class="wrap form-wrap">
+      <p class="load-note" id="quizNote" hidden>The directory couldn't load just now. Try again in a minute.</p>
+      <div id="quiz" class="quiz"></div>
+      <div id="quizResults" hidden></div>
+    </div>
+  </section>
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="choirs-seed.js"></script>
+<script src="config.js"></script>
+<script src="common.js"></script>
+<script src="quiz.js"></script>
+</body>
+</html>

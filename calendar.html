@@ -42,9 +42,23 @@
           <button type="button" data-source="sing" aria-pressed="false">SING! events</button>
           <button type="button" data-source="community" aria-pressed="false">Community</button>
         </div>
-        <select id="typeFilter" aria-label="Kind of event"></select>
         <input type="search" id="calSearch" placeholder="Search groups, events, venues" aria-label="Search the calendar">
       </div>
+      <div class="filters">
+        <select id="typeFilter" aria-label="Kind of event"></select>
+        <select id="monthFilter" aria-label="Month"></select>
+        <select id="areaFilter" aria-label="Where"></select>
+        <select id="groupFilter" aria-label="Who's putting it on"></select>
+      </div>
+      <div class="filters">
+        <div class="chips">
+          <button type="button" class="chip" id="freeOnly" aria-pressed="false">Free</button>
+          <button type="button" class="chip" id="joinIn" aria-pressed="false">I can join in</button>
+          <button type="button" class="chip" id="soon" aria-pressed="false">Next 30 days</button>
+        </div>
+        <button type="button" class="linklike filter-clear" id="clearFilters" hidden>Clear all filters</button>
+      </div>
+      <p class="result-count" id="calCount"></p>
       <p class="load-note" id="calNote" hidden>Community events couldn't load just now. Try again in a minute.</p>
       <ol class="calendar" id="calList"><li class="empty">Loading…</li></ol>
     </div>

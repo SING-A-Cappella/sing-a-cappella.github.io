@@ -40,6 +40,8 @@ main:focus { outline: none; }
 .chip { font: 600 .85rem var(--body); border: 2px solid var(--line); background: #fff; color: var(--navy); border-radius: 999px; padding: 7px 13px; cursor: pointer; }
 .chip[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: #fff; }
 .result-count { color: var(--muted); font-weight: 500; margin: -8px 0 20px; }
+.filters + .filters { margin-top: -14px; }
+.filter-clear { color: var(--red-dark); font-weight: 600; font-size: .9rem; }
 
 /* Calendar rows */
 .cal-body { min-width: 0; }
@@ -94,6 +96,23 @@ main:focus { outline: none; }
 .job-list dd { color: var(--muted); }
 .choir-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 8px; }
 .updated { font-size: .78rem; }
+
+/* Find a choir quiz */
+.quiz { background: #fff; border-radius: var(--radius); padding: clamp(26px, 5vw, 44px); box-shadow: 0 10px 30px rgba(28,36,75,.06); }
+.quiz-progress { color: var(--muted); font-weight: 600; font-size: .85rem; text-transform: uppercase; letter-spacing: .1em; margin: 0 0 10px; }
+.quiz-ask { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 24px; }
+.quiz-ask:focus { outline: none; }
+.quiz-options { display: flex; flex-direction: column; gap: 10px; }
+.quiz-option { font: 600 1.05rem var(--body); text-align: left; background: var(--cream); border: 2px solid var(--line); border-radius: 14px; padding: 16px 20px; cursor: pointer; color: var(--ink); transition: transform .12s, border-color .12s; }
+.quiz-option:hover { transform: translateX(3px); border-color: var(--red); }
+.quiz-option[aria-pressed="true"] { background: var(--pink); border-color: var(--red); }
+.quiz-nav { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-top: 24px; }
+.quiz-nav .linklike { color: var(--navy); font-weight: 600; }
+.quiz-nav .btn { margin-left: auto; }
+.quiz-result-head { margin-bottom: 30px; }
+.quiz-result-head .head-actions { margin-top: 22px; }
+.why { margin: 0; }
+.why li { background: var(--pink); color: var(--navy); font-weight: 600; font-size: .8rem; }
 
 /* Forms */
 .form-wrap { max-width: 780px; }

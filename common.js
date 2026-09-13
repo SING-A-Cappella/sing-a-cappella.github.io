@@ -64,7 +64,8 @@
       <h4>Join in</h4>
       <p><a href="calendar.html">Community calendar</a></p>
       <p><a href="submit-event.html">Add your event</a></p>
-      <p><a href="choirs.html">Find a choir</a> · <a href="list-your-choir.html">List your group</a></p>
+      <p><a href="choirs.html">Find a choir</a> · <a href="quiz.html">Quiz</a></p>
+      <p><a href="list-your-choir.html">List your group</a></p>
       <p><a href="perform.html">Perform at SING!</a></p>
       <p><a href="volunteer.html">Volunteer</a></p>
       <p><a href="sponsor.html">Sponsor SING!</a></p>
@@ -261,6 +262,15 @@
     return "https://calendar.google.com/calendar/render?" + params;
   }
 
+  // Which part of town an event is in, worked out from its address or venue name.
+  const AREAS = ["St. Albert", "Sherwood Park", "Spruce Grove", "Stony Plain", "Fort Saskatchewan",
+    "Beaumont", "Leduc", "Morinville", "Alberta Beach", "Edmonton"];
+  function areaOf(it) {
+    const where = `${it.venue || ""} ${it.address || ""}`;
+    const found = AREAS.find(a => where.toLowerCase().includes(a.toLowerCase().replace(".", "")) || where.includes(a));
+    return found || (it.kind === "sing" ? "Edmonton" : "");
+  }
+
   function subscribeUrls() {
     if (!C.backendUrl) return null;
     const https = C.backendUrl + "?feed=ics", webcal = https.replace(/^https:/, "webcal:");
@@ -287,6 +297,50 @@
     return jsonp({ feed: "shop" })
       .then(d => ({ products: d.ok ? d.products || [] : [], shippingFee: d.shippingFee || 0, offline: !d.ok }))
       .catch(() => ({ products: [], shippingFee: 0, offline: true }));
+  }
+
+  // ---------- one choir's card, shared by the directory and the quiz ----------
+  const openToAll = c => /no audition/i.test(c.joining || "");
+  const ACCEPTING = { Yes: ["badge-gold", "Taking new members"], Waitlist: ["badge-grey", "Waitlist"], "Not right now": ["badge-grey", "Not taking new members right now"] };
+  const initials = name => (name || "").split(/\s+/)
+    .filter(w => /^[A-Za-z0-9]/.test(w) && !/^(the|of|and)$/i.test(w))
+    .slice(0, 3).map(w => w[0].toUpperCase()).join("") || "♪";
+
+  function choirCard(c, opts) {
+    const o = opts || {};
+    const days = c.days || [];
+    const dayText = days.length > 2 ? days.map(d => d.slice(0, 3)).join(", ") : days.map(d => d + "s").join(" & ");
+    const site = safeUrl(c.website), img = safeUrl(c.image);
+    const email = /^[^@\s<>"]+@[^@\s<>"]+\.[^@\s<>"]+$/.test(c.publicEmail || "") ? c.publicEmail : "";
+    const fact = (k, v) => (v ? `<dt>${k}</dt><dd>${esc(v)}</dd>` : "");
+    const accept = ACCEPTING[c.accepting];
+    const updated = c.verified || c.updated ? parseDate(c.verified || c.updated) : null;
+    return `<article class="choir">
+      ${img ? `<img class="choir-img" src="${esc(img)}" alt="" loading="lazy">`
+            : `<div class="choir-img choir-img-blank" aria-hidden="true">${esc(initials(c.name))}</div>`}
+      <div class="choir-body">
+        <div class="cal-kicker">${c.example ? '<span class="tag tag-example">Example</span>' : ""}${c.kind ? `<span class="cal-type">${esc(c.kind)}</span>` : ""}</div>
+        <h3>${esc(c.name)}</h3>
+        ${(o.reasons || []).length ? `<ul class="tags why">${o.reasons.map(r => `<li>${esc(r)}</li>`).join("")}</ul>` : ""}
+        <div class="badges">
+          ${c.joining ? `<span class="badge ${openToAll(c) ? "badge-green" : "badge-navy"}">${esc(c.joining)}</span>` : ""}
+          ${accept ? `<span class="badge ${accept[0]}">${accept[1]}</span>` : ""}
+        </div>
+        ${c.about ? `<p>${esc(c.about)}</p>` : ""}
+        <dl class="facts">
+          ${fact("Rehearsals", [dayText, c.time].filter(Boolean).join(", "))}
+          ${fact("Where", c.location)}${fact("Season", c.season)}
+          ${fact("Voices", (c.voices || []).join(", "))}${fact("Ages", c.ages)}${fact("Fees", c.fees)}
+          ${fact("To join", c.joiningDetails)}
+        </dl>
+        <div class="choir-links">
+          ${site ? `<a class="btn btn-navy btn-small" href="${esc(site)}" target="_blank" rel="noopener">Visit their website</a>` : ""}
+          ${email ? `<a class="btn btn-outline btn-small" href="mailto:${esc(email)}?subject=${encodeURIComponent("Joining " + c.name)}">Email them</a>` : ""}
+        </div>
+        ${safeUrl(c.source) ? `<p class="updated">${updated ? `Checked ${MONTHS_LONG[updated.getMonth()]} ${updated.getFullYear()} · ` : ""}from <a class="listed" href="${esc(safeUrl(c.source))}" target="_blank" rel="noopener">${esc(c.sourceName || "their website")}</a> · <a href="list-your-choir.html">is this your group?</a></p>`
+          : updated ? `<p class="updated">Listing updated ${MONTHS_LONG[updated.getMonth()]} ${updated.getFullYear()}</p>` : ""}
+      </div>
+    </article>`;
   }
 
   // ---------- edit in place ----------
@@ -341,7 +395,7 @@
 
   window.SING = {
     C, MONTHS, MONTHS_LONG, DAYS, esc, parseDate, isoDay, addDays, today, clockTime, safeUrl, publicTitle, tidy,
-    send, shrinkImage, loadCalendar, calendarItems, upcoming, calendarRow, subscribeUrls, loadChoirs, loadShop,
+    send, shrinkImage, loadCalendar, calendarItems, upcoming, calendarRow, subscribeUrls, loadChoirs, loadShop, areaOf, choirCard, openToAll,
     refreshEditable, isEditing: () => editing, preview: !C.backendUrl,
   };
 
