@@ -10,7 +10,7 @@ window.SING_CONFIG = {
 
   // Mailchimp: Audience → Signup forms → Embedded forms → copy the address in the
   // form's action="…" (it contains list-manage.com/subscribe/post). Empty = preview.
-  mailchimpSignupUrl: "",
+  mailchimpSignupUrl: "https://singedmonton.us12.list-manage.com/subscribe/post?u=1b7845a93211e58fddae18646&id=16a95445e6&f_id=00d60ee9f0",
 
   // Merch. Each product's buyUrl is its checkout link (for example a Square payment link).
   // Products can also be added on the Shop page itself with "Team: edit this page".
