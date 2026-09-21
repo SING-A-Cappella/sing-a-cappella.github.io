@@ -7,8 +7,8 @@
    Anything not listed is on. `?hide=` and `?show=` in the address are for previewing inside the
    app — they change nothing for anyone else. */
 window.SING_SECTIONS = {
-  updated: "2026-09-18T04:24:00+00:00",
-  off: []
+  updated: "2026-09-21T22:00:00+00:00",
+  off: ["page.quiz", "page.shop", "page.volunteer"]
 };
 (function () {
   var S = window.SING_SECTIONS || {};

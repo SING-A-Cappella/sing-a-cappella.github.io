@@ -75,7 +75,7 @@
       <p data-section="page.perform"><a href="${ROOT}perform.html">Perform at SING!</a></p>
       <p data-section="page.volunteer"><a href="${ROOT}volunteer.html">Volunteer</a></p>
       <p><a href="${ROOT}sponsor.html">Sponsor SING!</a></p>
-      <p><a href="${ROOT}shop.html">Shop</a></p>
+      <p data-section="page.shop"><a href="${ROOT}shop.html">Shop</a></p>
     </div>
     <div>
       <h2 class="footer-h">About</h2>
