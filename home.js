@@ -3,10 +3,30 @@
   const S = window.SING, F = S.C.festival;
   const start = S.parseDate(F.start);
 
-  const days = Math.round((start - S.today()) / 86400000);
+  // ---- Live countdown to the first festival day, in Edmonton time wherever the visitor is ----
+  // The seconds tick for the eye only; screen readers get the day count once, not every second.
   const cd = document.getElementById("countdown");
-  if (days > 1) cd.innerHTML = `<b>${days}</b> days until the festival`;
-  else if (days > -F.days) cd.innerHTML = "<b>It's festival weekend!</b>";
+  const target = Date.parse(`${F.start}T${F.startTime || "00:00"}:00${F.utcOffset || "-07:00"}`);
+  const over = target + F.days * 86400000;
+  const pad = (n, w) => String(n).padStart(w, "0");
+  const unit = (n, w, label) => `<span class="cd-u"><b style="min-width:${w}ch">${pad(n, w)}</b>${label}</span>`;
+  let spoken = "";
+  function tick() {
+    const now = Date.now(), ms = target - now;
+    if (ms <= 0) {
+      clearInterval(timer);
+      cd.innerHTML = now < over ? "<b>It's festival weekend!</b>" : "";
+      cd.removeAttribute("aria-hidden");
+      return;
+    }
+    const s = Math.floor(ms / 1000), d = Math.floor(s / 86400), h = Math.floor(s / 3600) % 24, m = Math.floor(s / 60) % 60;
+    cd.innerHTML = unit(d, d > 99 ? 3 : 2, d === 1 ? "day" : "days") + unit(h, 2, "hrs") + unit(m, 2, "min") + unit(s % 60, 2, "sec")
+      + `<span class="cd-l">until the festival</span>`;
+    const say = `${d} day${d === 1 ? "" : "s"} until the festival`;
+    if (say !== spoken) { spoken = say; document.getElementById("countdownSr").textContent = say; }
+  }
+  const timer = setInterval(tick, 1000);
+  tick();
 
   const { sing, community } = await S.loadCalendar();
 

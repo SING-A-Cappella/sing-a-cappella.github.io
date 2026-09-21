@@ -60,6 +60,10 @@ h3 { font-size: 1.9rem; color: var(--navy); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
 .countdown { margin-top: 34px; font-family: var(--display); font-weight: 700; font-size: 1.4rem; text-transform: uppercase; letter-spacing: .04em; opacity: .75; }
 .countdown b { color: var(--gold); font-size: 2rem; }
+.countdown { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; }
+.cd-u { display: inline-flex; align-items: baseline; gap: 6px; }
+.cd-u b { display: inline-block; text-align: right; font-variant-numeric: tabular-nums; }
+.cd-l { flex-basis: 100%; font-size: 1.1rem; }
 
 /* The "voices" sound bars along the bottom of the hero */
 .voices { position: absolute; left: 0; right: 0; bottom: 0; height: 150px; display: flex; align-items: flex-end; gap: 1.2%; padding: 0 2%; z-index: 1; }
