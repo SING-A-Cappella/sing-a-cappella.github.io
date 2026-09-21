@@ -164,9 +164,9 @@
       results.hidden = true;
       box.hidden = false;
       renderQuestion();
-      box.scrollIntoView({ block: "center", behavior: "smooth" });
+      box.scrollIntoView({ block: "center", behavior: S.motion });
     });
-    results.scrollIntoView({ block: "start", behavior: "smooth" });
+    results.scrollIntoView({ block: "start", behavior: S.motion });
   }
 
   renderQuestion();

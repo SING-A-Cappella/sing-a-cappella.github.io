@@ -8,19 +8,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="sections.js"></script>
 <link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="pages.css">
+<link rel="canonical" href="https://singedmonton.com/perform">
+<meta property="og:url" content="https://singedmonton.com/perform">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:site_name" content="SING! Edmonton">
 <meta property="og:title" content="Perform at SING! Edmonton 2027">
 <meta property="og:description" content="Vocal groups and solo vocal artists: apply for the March 12–14, 2027 festival.">
-<meta property="og:image" content="https://singedmonton.com/images/og-image.png">
+<meta property="og:image" content="https://singedmonton.com/images/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <div id="siteHeader"></div>
 
-<main>
+<main data-section="page.perform">
   <section class="page-head">
     <div class="wrap">
       <p class="preview-note" data-preview-note>Preview: this form isn't connected yet, so nothing will be sent</p>
@@ -60,8 +63,9 @@
 
         <fieldset>
           <legend data-edit="pf.l2">Let us hear you</legend>
-          <div class="field"><label for="video">Video links</label><textarea id="video" name="video" maxlength="1500" style="min-height:90px" placeholder="YouTube, Vimeo, Instagram or Google Drive links, one per line"></textarea></div>
+          <div class="field"><label for="video">Video links</label><textarea id="video" name="video" maxlength="1500" style="min-height:90px" placeholder="YouTube, Vimeo, Instagram or Google Drive links, one per line" aria-describedby="videoHelp"></textarea><p class="help" id="videoHelp">Videos are usually best as links. An unlisted YouTube video is fine.</p></div>
           <div class="field"><label for="audio">Audio links</label><textarea id="audio" name="audio" maxlength="1500" style="min-height:90px" placeholder="Spotify, SoundCloud, Bandcamp… one per line"></textarea></div>
+          <div class="field"><label for="samples">Audio or video files</label><input id="samples" type="file" multiple data-upload="sample" accept="audio/*,video/mp4,video/quicktime,.mp3,.m4a,.wav,.aif,.aiff,.flac,.mp4,.mov" aria-describedby="samplesHelp"><p class="help" id="samplesHelp">Optional. Up to 3 recordings (audio, MP4 or MOV), each up to 20 MB. Phone videos are often too big, so a link above usually works better.</p></div>
           <div class="field"><label for="links">Website and social media</label><textarea id="links" name="links" maxlength="800" style="min-height:90px"></textarea></div>
           <div class="field"><label for="photo">Group photo</label><input id="photo" type="file" accept="image/*"><p class="help">Optional. If you're booked, we may use it to promote the festival.</p></div>
         </fieldset>
@@ -84,6 +88,7 @@
             </select>
           </div>
           <div class="field"><label for="tech">Technical needs</label><textarea id="tech" name="tech" maxlength="800" style="min-height:90px" placeholder="Number of microphones, a keyboard for pitch, anything else"></textarea></div>
+          <div class="field"><label for="rider">Tech rider or stage plot</label><input id="rider" type="file" data-upload="rider" accept="application/pdf,.pdf,image/*" aria-describedby="riderHelp"><p class="help" id="riderHelp">Optional. A PDF or a photo, up to 20 MB.</p></div>
           <div class="field"><label for="notes">Anything else we should know?</label><textarea id="notes" name="notes" maxlength="1200" style="min-height:90px"></textarea></div>
         </fieldset>
 
@@ -100,6 +105,7 @@
         <label class="consent"><input type="checkbox" name="mediaPermission" value="yes" required> <span data-edit="pf.consent">We have permission to share the photos, videos and recordings in this application.</span></label>
         <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website_hp" tabindex="-1" autocomplete="off"></label></div>
         <button class="btn btn-red" type="submit">Send my application</button>
+        <p class="form-progress help" role="status"></p>
         <p class="form-status" role="alert"></p>
         <p class="help">See our <a href="privacy.html">privacy note</a>.</p>
       </form>
@@ -107,6 +113,7 @@
       <div class="form-thanks" id="thanks" hidden>
         <h2 data-edit="pf.thanksTitle">Thanks for applying!</h2>
         <p data-edit="pf.thanksBody">We read every application as we build the lineup. If there's a spot that suits you we'll email you, and if this year doesn't work out we keep applications on file for the next one.</p>
+        <p class="upload-missed" hidden></p>
         <p class="preview-sent" hidden>Preview only: the form isn't connected yet, so this wasn't sent anywhere.</p>
         <a class="btn btn-navy" href="index.html">Back to the festival</a>
       </div>

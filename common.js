@@ -24,16 +24,22 @@
   const tidy = t => t.replace(/\s*[\[(].*?[\])]/g, "").replace(/^\d{4}\s+/, "").replace(/:\s*Live in Edmonton$/, " — live in Edmonton").trim();
 
   // ---------- header & footer ----------
-  const LOGO = (document.querySelector('link[href$="site.css"]').getAttribute("href").startsWith("/") ? "/" : "") + "images/sing-logo.png";
+  /* Where the site's own files are, as seen from this page: "" for most pages, "../" for an
+     event's own page, "/" for the 404 page (shown at whatever address was typed, like an old
+     /events/x/ link). Worked out from how the page loads site.css, so menu links always work. */
+  const ROOT = document.querySelector('link[href$="site.css"]').getAttribute("href").replace(/site\.css$/, "");
+  const LOGO = ROOT + "images/sing-logo.png";
   const here = (location.pathname.split("/").pop() || "index").replace(/\.html$/, "") || "index";
   const section = { "submit-event": "calendar", "list-your-choir": "choirs" }[here] || here;
+  /* The fourth item is the section key, so a page switched off in Festival HQ also disappears
+     from the menu and the footer (see sections.js). */
   const NAV = [
-    ["index.html#festival", "Festival 2027", "festival"],
-    ["calendar.html", "Calendar", "calendar"],
-    ["choirs.html", "Find a choir", "choirs"],
-    ["perform.html", "Perform", "perform"],
-    ["shop.html", "Shop", "shop"],
-    ["index.html#involved", "Get involved", "involved"],
+    ["index.html#festival", "Festival 2027", "festival", "home.festival"],
+    ["calendar.html", "Calendar", "calendar", "page.calendar"],
+    ["choirs.html", "Find a choir", "choirs", "page.choirs"],
+    ["perform.html", "Perform", "perform", "page.perform"],
+    ["shop.html", "Shop", "shop", "page.shop"],
+    ["index.html#involved", "Get involved", "involved", "home.involved"],
   ];
 
   const header = `
@@ -45,12 +51,12 @@
   <button type="button" id="editDone">Done</button>
 </div>
 <header class="top">
-  <a class="brand" href="index.html" aria-label="SING! Edmonton home"><img src="${LOGO}" alt="SING! Edmonton" width="56" height="50"></a>
+  <a class="brand" href="${ROOT}index.html" aria-label="SING! Edmonton home"><img src="${LOGO}" alt="SING! Edmonton" width="56" height="50"></a>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mainNav">Menu</button>
   <nav class="nav" id="mainNav" aria-label="Main">
-    ${NAV.map(([href, label, key]) => `<a href="${href}"${key === section ? ' aria-current="page"' : ""}>${label}</a>`).join("")}
+    ${NAV.map(([href, label, key, sect]) => `<a href="${ROOT}${href}"${sect ? ` data-section="${sect}"` : ""}${key === section ? ' aria-current="page"' : ""}>${label}</a>`).join("")}
   </nav>
-  <a class="btn btn-red btn-small" href="index.html#tickets" data-edit="nav.cta">Tickets</a>
+  <a class="btn btn-red btn-small" href="${ROOT}index.html#tickets" data-edit="nav.cta">Tickets</a>
 </header>`;
 
   const footer = `
@@ -61,26 +67,26 @@
       <p class="tagline" data-edit="foot.tagline">Sing together, listen together, SING! Edmonton.</p>
     </div>
     <div>
-      <h4>Join in</h4>
-      <p><a href="calendar.html">Community calendar</a></p>
-      <p><a href="submit-event.html">Add your event</a></p>
-      <p><a href="choirs.html">Find a choir</a> · <a href="quiz.html">Quiz</a></p>
-      <p><a href="list-your-choir.html">List your group</a></p>
-      <p><a href="perform.html">Perform at SING!</a></p>
-      <p><a href="volunteer.html">Volunteer</a></p>
-      <p><a href="sponsor.html">Sponsor SING!</a></p>
-      <p><a href="shop.html">Shop</a></p>
+      <h2 class="footer-h">Join in</h2>
+      <p data-section="page.calendar"><a href="${ROOT}calendar.html">Community calendar</a></p>
+      <p data-section="page.submit-event"><a href="${ROOT}submit-event.html">Add your event</a></p>
+      <p><span data-section="page.choirs"><a href="${ROOT}choirs.html">Find a choir</a></span> <span data-section="page.quiz">· <a href="${ROOT}quiz.html">Quiz</a></span></p>
+      <p data-section="page.list-your-choir"><a href="${ROOT}list-your-choir.html">List your group</a></p>
+      <p data-section="page.perform"><a href="${ROOT}perform.html">Perform at SING!</a></p>
+      <p data-section="page.volunteer"><a href="${ROOT}volunteer.html">Volunteer</a></p>
+      <p><a href="${ROOT}sponsor.html">Sponsor SING!</a></p>
+      <p><a href="${ROOT}shop.html">Shop</a></p>
     </div>
     <div>
-      <h4>About</h4>
-      <p><a href="about.html">Who we are</a></p>
-      <p><a href="what-its-like.html">Never been to a show?</a></p>
-      <p><a href="faq.html">Questions</a></p>
-      <p><a href="access.html">Access</a></p>
-      <p><a href="privacy.html">Privacy</a></p>
+      <h2 class="footer-h">About</h2>
+      <p><a href="${ROOT}about.html">Who we are</a></p>
+      <p><a href="${ROOT}what-its-like.html">Never been to a show?</a></p>
+      <p><a href="${ROOT}faq.html">Questions</a></p>
+      <p><a href="${ROOT}access.html">Access</a></p>
+      <p><a href="${ROOT}privacy.html">Privacy</a></p>
     </div>
     <div>
-      <h4>Say hi</h4>
+      <h2 class="footer-h">Say hi</h2>
       <p><a href="mailto:${esc(C.contactEmail)}">${esc(C.contactEmail)}</a></p>
       <p class="social">
         <a href="https://www.instagram.com/singedmonton/" target="_blank" rel="noopener">Instagram</a>
@@ -91,28 +97,36 @@
       <p>Use <b>#SINGEDMONTON</b> to be featured</p>
     </div>
     <div>
-      <h4>SING! Prairies Society</h4>
+      <h2 class="footer-h">SING! Prairies Society</h2>
       <p data-edit="foot.charity">A registered Canadian charity</p>
+      <p><span data-section="page.policies"><a href="${ROOT}policies.html">Our policies</a> · </span><a href="${ROOT}privacy.html">Privacy</a></p>
       <p><a href="https://www.canadahelps.org/en/charities/sing-prairies-society/" target="_blank" rel="noopener">Donate</a></p>
     </div>
   </div>
   <p class="fine">© ${new Date().getFullYear()} SING! Prairies Society · <button type="button" class="linklike" id="editStart">Team: edit this page</button></p>
 </footer>`;
 
-  const skipLink = `<a class="skip" href="#main">Skip to the main content</a>`;
-  const headerSlot = document.getElementById("siteHeader");
-  if (headerSlot) headerSlot.outerHTML = skipLink + header;
   const main = document.querySelector("main");
   if (main) { main.id = main.id || "main"; main.setAttribute("tabindex", "-1"); }
+  // Points at whatever the page calls its main area (the home page's is "top").
+  const skipLink = `<a class="skip" href="#${main ? main.id : "main"}">Skip to the main content</a>`;
+  const headerSlot = document.getElementById("siteHeader");
+  if (headerSlot) headerSlot.outerHTML = skipLink + header;
   const footerSlot = document.getElementById("siteFooter");
   if (footerSlot) footerSlot.outerHTML = footer;
 
   const top = document.querySelector(".top");
   const menuBtn = document.querySelector(".menu-btn");
-  if (menuBtn) menuBtn.addEventListener("click", () => {
-    const open = top.classList.toggle("open");
-    menuBtn.setAttribute("aria-expanded", String(open));
-  });
+  const setMenu = open => { top.classList.toggle("open", open); menuBtn.setAttribute("aria-expanded", String(open)); };
+  if (menuBtn) {
+    menuBtn.addEventListener("click", () => setMenu(!top.classList.contains("open")));
+    // The phone menu closes the way everything else does: tapping a link, tapping outside, or Esc.
+    top.querySelectorAll(".nav a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+    document.addEventListener("click", ev => { if (top.classList.contains("open") && !top.contains(ev.target)) setMenu(false); });
+    document.addEventListener("keydown", ev => {
+      if (ev.key === "Escape" && top.classList.contains("open")) { setMenu(false); menuBtn.focus(); }
+    });
+  }
   // Listings gathered from groups' own websites say so, instead of saying "example".
   const seededCalendar = () => !!(window.SING_COMMUNITY_SEED && window.SING_COMMUNITY_SEED.length);
   const seededChoirs = () => !!(window.SING_CHOIRS_SEED && window.SING_CHOIRS_SEED.length);
@@ -332,7 +346,7 @@
         <input id="signupEmail${i}" name="email" type="email" placeholder="Email address" required autocomplete="email">
         <button class="btn btn-red" type="submit">Sign me up</button>
       </form>
-      <p class="signup-note" hidden></p>`;
+      <p class="signup-note" role="status" hidden></p>`;
   });
   document.querySelectorAll("form.signup").forEach(bindSignup);
 
@@ -434,6 +448,8 @@
     C, MONTHS, MONTHS_LONG, DAYS, esc, parseDate, isoDay, addDays, today, clockTime, safeUrl, publicTitle, tidy,
     send, shrinkImage, loadCalendar, calendarItems, upcoming, calendarRow, subscribeUrls, loadChoirs, loadShop, areaOf, choirCard, openToAll,
     refreshEditable, isEditing: () => editing, preview: !C.backendUrl,
+    // Scrolling glides, unless someone has asked their device for less motion.
+    get motion() { return window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"; },
   };
 
   refreshEditable();

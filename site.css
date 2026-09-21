@@ -9,6 +9,8 @@
   --ink: #1f2233;
   --muted: #5d6275;
   --line: #e9e1d8;
+  /* Edges of things you type in or tick: 3:1 against white, so you can see where to type. */
+  --field: #8a8fa3;
   --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
   --body: "Poppins", -apple-system, "Segoe UI", Roboto, sans-serif;
   --radius: 18px;
@@ -78,6 +80,7 @@ h3 { font-size: 1.9rem; color: var(--navy); }
 /* Sections */
 .section { padding: clamp(64px, 9vw, 110px) 0; }
 .section-cream { background: var(--cream); }
+.section-cream a:not(.btn), .card a:not(.btn) { color: var(--red-dark); }
 .section-navy { background: var(--navy); color: #fff; }
 .section-navy h2 { color: #fff; }
 .section-head { margin-bottom: 44px; }
@@ -97,7 +100,7 @@ h3 { font-size: 1.9rem; color: var(--navy); }
 .calendar { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
 .cal-row { display: grid; grid-template-columns: 110px 1fr auto; gap: 22px; align-items: center; background: #fff; border-radius: var(--radius); padding: 18px 24px; box-shadow: 0 1px 0 var(--line); }
 .cal-row.featured { background: var(--red); color: #fff; }
-.cal-row.featured .cal-meta, .cal-row.featured .cal-month { color: rgba(255,255,255,.8); }
+.cal-row.featured .cal-meta, .cal-row.featured .cal-month { color: #fff; }
 .cal-date { text-align: center; line-height: 1; }
 .cal-month { display: block; text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; font-weight: 600; color: var(--red); }
 .cal-day { display: block; font-family: var(--display); font-weight: 900; font-size: 2.6rem; }
@@ -127,7 +130,7 @@ h3 { font-size: 1.9rem; color: var(--navy); }
 .card .btn { align-self: flex-start; margin-top: auto; }
 .card-red { background: var(--red); color: #fff; }
 .card-red h3 { color: #fff; }
-.card-red p { color: rgba(255,255,255,.92); }
+.card-red p { color: #fff; }
 .small { font-size: .85rem; }
 .tags { list-style: none; padding: 0; margin: 4px 0 8px; display: flex; flex-wrap: wrap; gap: 8px; }
 .tags li { background: #fff; border-radius: 999px; padding: 5px 12px; font-size: .85rem; font-weight: 500; }
@@ -149,7 +152,7 @@ h3 { font-size: 1.9rem; color: var(--navy); }
 /* Footer */
 .footer { background: var(--navy-deep); color: rgba(255,255,255,.8); padding: 60px 0 24px; }
 .footer a { color: #fff; }
-.footer h4 { color: #fff; margin: 0 0 10px; font-size: 1rem; }
+.footer h4, .footer .footer-h { color: #fff; margin: 0 0 10px; font: 600 1rem/1.3 var(--body); text-transform: none; letter-spacing: 0; }
 .footer p { margin: 0 0 8px; }
 .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
 .footer-logo { border-radius: 8px; height: 71px; width: auto; }

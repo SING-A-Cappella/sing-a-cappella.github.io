@@ -8,19 +8,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="sections.js"></script>
 <link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="pages.css">
+<link rel="canonical" href="https://singedmonton.com/choirs">
+<meta property="og:url" content="https://singedmonton.com/choirs">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:site_name" content="SING! Edmonton">
 <meta property="og:title" content="Find a choir in Edmonton — SING! Edmonton">
 <meta property="og:description" content="Rehearsal times, joining requirements, and which groups are taking new members.">
-<meta property="og:image" content="https://singedmonton.com/images/og-image.png">
+<meta property="og:image" content="https://singedmonton.com/images/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <div id="siteHeader"></div>
 
-<main>
+<main data-section="page.choirs">
   <section class="page-head">
     <div class="wrap">
       <p class="preview-note" data-preview-note="choirs" data-seeded-text="These listings were gathered from each group's own website — groups can update or remove theirs any time">Preview: example listings are shown until the directory is connected</p>
@@ -48,8 +51,9 @@
           <button type="button" class="chip" id="accepting" aria-pressed="false">Taking new members</button>
         </div>
       </div>
-      <p class="result-count" id="choirCount"></p>
+      <p class="result-count" id="choirCount" role="status"></p>
       <p class="load-note" id="choirNote" hidden>The directory couldn't load just now. Try again in a minute.</p>
+      <h2 class="sr">Choirs and groups</h2>
       <div class="choir-grid" id="choirGrid"><p class="empty">Loading…</p></div>
     </div>
   </section>

@@ -3,7 +3,7 @@ window.SING_CONFIG = {
   // Address of the Google Apps Script web app (it ends in /exec). See backend/SETUP.md.
   // While this is empty the site runs in preview mode: forms don't send anything and
   // the calendar, choir directory and shop show clearly-labelled examples.
-  backendUrl: "",
+  backendUrl: "https://script.google.com/macros/s/AKfycbxpvC0zz0kfqn4RJGmuyoxblnGf4L14etv2fD4zg6y_Jr0ZvGaS_lFme8TXKLxfcFAO/exec",
 
   festival: { name: "SING! Edmonton 2027", start: "2027-03-12", days: 3 },
   contactEmail: "info@singedmonton.com",

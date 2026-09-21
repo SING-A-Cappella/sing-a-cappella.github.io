@@ -8,14 +8,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="sections.js"></script>
 <link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="pages.css">
+<link rel="canonical" href="https://singedmonton.com/">
+<meta property="og:url" content="https://singedmonton.com/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:site_name" content="SING! Edmonton">
 <meta property="og:type" content="website">
 <meta property="og:title" content="SING! Edmonton — A Cappella Festival · March 12–14, 2027">
 <meta property="og:description" content="Concerts, workshops and Edmonton's own vocal groups. Edmonton's a cappella festival returns March 12–14, 2027.">
-<meta property="og:image" content="https://singedmonton.com/images/og-image.png">
+<meta property="og:image" content="https://singedmonton.com/images/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {
@@ -47,7 +50,7 @@
   "eventStatus": "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "url": "https://singedmonton.com/",
-  "image": "https://singedmonton.com/images/og-image.png",
+  "image": "https://singedmonton.com/images/og-image.jpg",
   "description": "Three days of a cappella and choral concerts, workshops and Edmonton's own vocal groups. Venues and lineup to be announced.",
   "location": {
     "@type": "Place",
@@ -64,7 +67,7 @@
 <main id="top">
 
   <!-- HERO -->
-  <section class="hero">
+  <section data-section="home.hero" class="hero">
     <div class="hero-inner">
       <p class="eyebrow" data-edit="hero.eyebrow">Edmonton's a cappella festival</p>
       <h1 class="hero-title">
@@ -84,7 +87,7 @@
   </section>
 
   <!-- FESTIVAL WEEKEND -->
-  <section class="section" id="festival">
+  <section data-section="home.festival" class="section" id="festival">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow red" data-edit="fest.eyebrow">SING! Edmonton 2027</p>
@@ -96,7 +99,7 @@
   </section>
 
   <!-- WHAT'S ON -->
-  <section class="section section-cream" id="calendar">
+  <section data-section="home.calendar" class="section section-cream" id="calendar">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow red" data-edit="cal.eyebrow">All year round</p>
@@ -117,7 +120,7 @@
   </section>
 
   <!-- CHOIRS + SHOP -->
-  <section class="section">
+  <section data-section="home.promos" class="section">
     <div class="wrap promo">
       <a href="choirs.html">
         <p class="eyebrow gold" data-edit="promo.choir.eyebrow">Find a choir</p>
@@ -135,7 +138,7 @@
   </section>
 
   <!-- EDUCATION -->
-  <section class="section section-navy" id="education">
+  <section data-section="home.education" class="section section-navy" id="education">
     <div class="wrap split">
       <div>
         <p class="eyebrow gold" data-edit="edu.eyebrow">Education Week</p>
@@ -152,7 +155,7 @@
   </section>
 
   <!-- GET INVOLVED -->
-  <section class="section" id="involved">
+  <section data-section="home.involved" class="section" id="involved">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow red" data-edit="inv.eyebrow">Get involved</p>
@@ -188,22 +191,22 @@
   </section>
 
   <!-- SPONSORS -->
-  <section class="section section-cream sponsors-section">
+  <section data-section="home.sponsors" class="section section-cream sponsors-section">
     <div class="wrap">
       <h2 class="h-small" data-edit="spons.title">We love our sponsors</h2>
       <ul class="sponsors">
-        <li><img src="images/sponsor-afa.png" alt="Alberta Foundation for the Arts" loading="lazy"></li>
-        <li><img src="images/sponsor-macewan.png" alt="MacEwan University" loading="lazy"></li>
-        <li><img src="images/sponsor-eac.jpg" alt="Edmonton Arts Council" loading="lazy"></li>
-        <li><img src="images/sponsor-long-mcquade.png" alt="Long &amp; McQuade" loading="lazy"></li>
-        <li><img src="images/sponsor-amef.png" alt="Alberta Music Education Foundation" loading="lazy"></li>
-        <li><img src="images/sponsor-simple-connections.jpg" alt="Simple Connections" loading="lazy"></li>
+        <li><img src="images/sponsor-afa.png" width="340" height="98" alt="Alberta Foundation for the Arts" loading="lazy"></li>
+        <li><img src="images/sponsor-macewan.png" width="340" height="126" alt="MacEwan University" loading="lazy"></li>
+        <li><img src="images/sponsor-eac.jpg" width="340" height="121" alt="Edmonton Arts Council" loading="lazy"></li>
+        <li><img src="images/sponsor-long-mcquade.png" width="340" height="56" alt="Long &amp; McQuade" loading="lazy"></li>
+        <li><img src="images/sponsor-amef.png" width="340" height="195" alt="Alberta Music Education Foundation" loading="lazy"></li>
+        <li><img src="images/sponsor-simple-connections.jpg" width="340" height="254" alt="Simple Connections" loading="lazy"></li>
       </ul>
     </div>
   </section>
 
   <!-- TICKETS -->
-  <section class="section" id="tickets">
+  <section data-section="home.tickets" class="section" id="tickets">
     <div class="wrap split">
       <div>
         <p class="eyebrow red" data-edit="tix.eyebrow">Tickets</p>
@@ -223,7 +226,7 @@
   </section>
 
   <!-- NEWSLETTER -->
-  <section class="section newsletter" id="newsletter">
+  <section data-section="home.newsletter" class="section newsletter" id="newsletter">
     <div class="wrap narrow">
       <h2 data-edit="news.title">Be first to hear</h2>
       <p data-edit="news.body">Lineup announcements and first word when tickets go on sale, about once a month. Unsubscribe in one click, and we never pass your address on.</p>
