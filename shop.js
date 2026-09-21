@@ -4,6 +4,7 @@
 // Preview (no backend yet): example products that the team can reword, price and add to in edit mode.
 (function () {
   const S = window.SING;
+  if (S.pageOff()) return;
   const grid = document.getElementById("shopGrid");
   const money = (amount, currency) => new Intl.NumberFormat("en-CA", { style: "currency", currency: currency || "CAD" }).format(amount);
 

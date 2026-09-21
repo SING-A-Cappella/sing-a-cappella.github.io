@@ -1,7 +1,8 @@
-// "Which choir is your choir?" — six questions, then the groups from the directory that fit best.
+// "Which choir is your choir?" — seven questions, then the groups from the directory that fit best.
 // Everything happens in the browser; nothing is sent anywhere.
 (async function () {
   const S = window.SING;
+  if (S.pageOff()) return;
   const box = document.getElementById("quiz"), results = document.getElementById("quizResults");
   const WEEK = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   const STYLES = [

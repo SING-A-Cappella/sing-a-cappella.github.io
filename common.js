@@ -269,7 +269,7 @@
     }
     const params = new URLSearchParams({
       action: "TEMPLATE", ctz: "America/Edmonton", dates,
-      text: it.kind === "sing" ? `SING! Edmonton: ${it.title}` : `${it.title} — ${it.group || ""}`.trim(),
+      text: it.kind === "sing" ? (/^SING!/.test(it.title) ? it.title : `SING! Edmonton: ${it.title}`) : `${it.title} — ${it.group || ""}`.trim(),
       location: [it.venue, it.address].filter(Boolean).join(", "),
       details: [it.description, safeUrl(it.link)].filter(Boolean).join("\n\n"),
     });
@@ -428,6 +428,7 @@
   });
   document.getElementById("editStart").addEventListener("click", () => { setEditing(true); window.scrollTo({ top: 0 }); });
   document.getElementById("editDone").addEventListener("click", () => setEditing(false));
+  document.addEventListener("keydown", ev => { if (ev.key === "Escape" && editing && !(ev.target.closest && ev.target.closest("[data-edit]"))) setEditing(false); });
   // Edits only live on this computer until they're copied into config.js, so hand them over in one go.
   document.getElementById("editCopy").addEventListener("click", async () => {
     let products = null;
@@ -448,6 +449,9 @@
     C, MONTHS, MONTHS_LONG, DAYS, esc, parseDate, isoDay, addDays, today, clockTime, safeUrl, publicTitle, tidy,
     send, shrinkImage, loadCalendar, calendarItems, upcoming, calendarRow, subscribeUrls, loadChoirs, loadShop, areaOf, choirCard, openToAll,
     refreshEditable, isEditing: () => editing, preview: !C.backendUrl,
+    // A page switched off in Festival HQ shows "Not quite ready"; its own script shouldn't run.
+    pageOff: () => { const m = document.querySelector("main[data-section]"); return !!m && !/[?&]hq=1/.test(location.search)
+      && ((window.SING_SECTIONS || {}).effective || []).indexOf(m.dataset.section) >= 0; },
     // Scrolling glides, unless someone has asked their device for less motion.
     get motion() { return window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"; },
   };

@@ -161,6 +161,7 @@
 <script>
 /* Open shifts, when the team has put some up (Festival HQ writes volunteer-shifts.json). No file, no section. */
 (async () => {
+  if (window.SING.pageOff()) return;
   try {
     const r = await fetch("volunteer-shifts.json", { cache: "no-store" });
     if (!r.ok) return;
